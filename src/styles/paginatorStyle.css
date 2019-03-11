@@ -1,0 +1,22 @@
+.pagination {
+    border: none;
+}
+
+.page-link {
+    border: none;
+    color: black;
+
+}
+
+.page-item {
+    border: none;
+}
+
+.page-item.active .page-link {
+    background: black;
+    border-radius: 7px;
+}
+
+*:focus {
+    outline: none;
+}
