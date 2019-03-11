@@ -24,7 +24,9 @@ class BrowsePage extends Component {
     return (
       <div style={basicContainerStyle}>
         <ItemContainer />
-        <PaginationContainer />
+        <PaginationContainer
+        page = {this.props.match.params.page}
+        />
       </div>
     );
   }
