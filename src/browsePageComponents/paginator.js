@@ -19,6 +19,7 @@ export default class Paginator extends Component {
     render() {
         return (
             <Pagination>
+                <button onClick={()=>this.props.historyUpdate}></button>
                 {/* <Pagination.First /> */}
                 <Pagination.Prev onClick={()=>this.props.updateCurrentPage(this.props.currentpage - 1)}/>
                 <Pagination.Ellipsis />

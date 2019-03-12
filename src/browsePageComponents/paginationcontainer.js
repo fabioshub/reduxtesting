@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Paginator from './paginator.js';
-import { paginatorUpdater, itemDataCreator, resetCurrentItemData } from '../actions/actions.js';
+import { itemDataCreator, resetCurrentItemData } from '../actions/actions.js';
+import { withRouter } from 'react-router-dom';
+
+
 
 import axios from 'axios';
 
@@ -9,9 +12,10 @@ import axios from 'axios';
 class paginationContainer extends Component {
 
     updateCurrentPage = (newPage) => {
-        this.props.dispatch(paginatorUpdater(newPage))
-        this.fetchItemData(newPage)
-        // history.push('/browse/' + newPage)
+        if (newPage > 0 ) {
+            this.props.history.push(`/browse/${newPage}`)
+            this.fetchItemData(newPage)
+        }
     }
 
     fetchItemData(page) {
@@ -29,12 +33,13 @@ class paginationContainer extends Component {
             <Paginator 
             updateCurrentPage={this.updateCurrentPage}
             currentpage={this.props.currentpage}
+
             />
         );
     }
 }
 
-const mapStateToProps = (state) => ({
-     currentpage: state.currentpage
+const mapStateToProps = (state, ownProps) => ({
+     currentpage: parseInt(ownProps.match.params.page, 10)
 })
-export default connect(mapStateToProps)(paginationContainer)
+export default withRouter(connect(mapStateToProps)(paginationContainer));

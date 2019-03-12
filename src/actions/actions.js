@@ -11,13 +11,6 @@ export const itemDataCreator = (data) => {
     }
 }
 
-export const paginatorUpdater = (page) => {
-    return {
-        type: "CURRENTPAGE",
-        payload: page
-    }
-}
-
 export const resetCurrentItemData = {
     type: "RESETITEMDATA",
     payload: null

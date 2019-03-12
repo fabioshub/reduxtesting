@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Items from './items.js';
 
+
+
 class itemsContainer extends Component {
     render() {
         return (
