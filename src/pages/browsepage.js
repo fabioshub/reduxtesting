@@ -3,6 +3,8 @@ import ItemContainer from '../browsePageComponents/itemscontainer.js';
 import { itemDataCreator } from '../actions/actions.js';
 import PaginationContainer from '../browsePageComponents/paginationcontainer';
 import { connect } from 'react-redux';
+import { PAGEAMOUNT } from '../constants/otherConstant.js';
+import { pageCalculator } from '../constants/pagecalculator.js';
 
 
 import axios from 'axios';
@@ -15,9 +17,11 @@ class BrowsePage extends Component {
   }
 
   loadInitalData = () => {
-    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=dbb619d6178c8ecdfc83dc6e69d51737&language=en-US&page=${this.props.pageNumber}`)
+    const pageNumber = pageCalculator(this.props.pageNumber, PAGEAMOUNT)
+    const params = {pageNumber: pageNumber, productGroup: this.props.productGroup, pageAmount: PAGEAMOUNT}
+    axios.post(`http://localhost:58080/data`, { params })
     .then(data => {
-      this.props.dispatch(itemDataCreator(data.data))
+      this.props.dispatch(itemDataCreator(data.data.docs))
       });
       
   }
@@ -43,8 +47,11 @@ const basicContainerStyle = {
   "justifyContent": "center"
 }
 
+
+
 const mapStateToprops = (state, ownProps) => ({
-  pageNumber: parseInt(ownProps.match.params.page, 10)
+  pageNumber: parseInt(ownProps.match.params.page, 10),
+  productGroup: parseInt(ownProps.match.params.productgroup, 10)
 })
 
 export default connect(mapStateToprops)(BrowsePage);

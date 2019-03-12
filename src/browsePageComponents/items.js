@@ -4,21 +4,20 @@ import { Container, Row, Col } from 'react-bootstrap';
 export default class Items extends Component {
 
     renderItems() {
-        return this.props.data.results.map((item, index) => {
+        return this.props.data.map((item, index) => {
             return (
                 <Col style={itemStyle.containerStyle} key={index} sm={4}>
-                    <img src={'https://image.tmdb.org/t/p/original'+item.poster_path} style={itemStyle.pictureStyle}></img>
+                    <img src={item.imageSmall} style={itemStyle.pictureStyle}></img>
                     <hr style={itemStyle.hrStyle}/>
-                    <span style={itemStyle.titleStyle}>{item.title}</span>
+                    <span style={itemStyle.titleStyle}>{item.description}</span>
                     <div style={itemStyle.metaStyle} className="text-left">
                         <br/>
-                        <span style={itemStyle.idStyle}>{item.id}</span>
+                        <span style={itemStyle.idStyle}>{item.size}</span>
                         <br/>
-                        <span style={itemStyle.rdStyle}>{item.release_date}</span>
-                        <br/>
-                        <span style={itemStyle.rdStyle}>{item.vote_count}</span>
+                        <span style={itemStyle.rdStyle}>{item.collection}</span>
+                       
                     </div>
-                    <span style={itemStyle.priceStyle}>{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(item.vote_average)}</span>
+                    <span style={itemStyle.priceStyle}>{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(item.consumerPrice)}</span>
                 </Col>
             )
         })

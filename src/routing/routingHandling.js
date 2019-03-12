@@ -8,7 +8,7 @@ export class CustomRouter extends Component {
         return (
             <Router >
                 <Switch>
-                    <Route path='/browse/:page' component={BrowsePage}></Route>
+                    <Route exact path='/browse/:productgroup/:page' component={BrowsePage}></Route>
                 </Switch>
             </Router>            
         );
