@@ -7,7 +7,7 @@ export default class Items extends Component {
         return this.props.data.map((item, index) => {
             return (
                 <Col style={itemStyle.containerStyle} key={index} sm={4}>
-                    <img src={item.imageSmall} style={itemStyle.pictureStyle}></img>
+                    <img src={item.imageSmall} alt={index} style={itemStyle.pictureStyle}></img>
                     <hr style={itemStyle.hrStyle}/>
                     <span style={itemStyle.titleStyle}>{item.description}</span>
                     <div style={itemStyle.metaStyle} className="text-left">
@@ -48,6 +48,7 @@ const itemStyle = {
     },
     pictureStyle: {
         width: "80px",
+        maxHeight: "80px",
         margin: "10px 0 10px 0"
     },
     rdStyle: {
