@@ -21,6 +21,7 @@ const route = server => {
 export const productOrder = [
     {
         code: '3',
+        ja: 'test',
         items: [
             new CustomProductGroup('pot-s', { NLD: 'Pot S', ENU: 'Pot S', DEU: 'Topf S', FRA: 'Pot S' }, getProductGroupImage('Potten & Schalen/Potten S.jpg'), [ '01070', '01050' ]),
             new CustomProductGroup('pot-m', { NLD: 'Pot M', ENU: 'Pot M', DEU: 'Topf M', FRA: 'Pot M' }, getProductGroupImage('Potten & Schalen/Potten M.jpg'), [ '01040', '01030' ]),
