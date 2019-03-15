@@ -4,8 +4,6 @@ import { itemDataCreator } from '../actions/actions.js';
 import PaginationContainer from '../browsePageComponents/paginationcontainer';
 import { connect } from 'react-redux';
 import { PAGEAMOUNT } from '../constants/otherConstant.js';
-import { pageCalculator } from '../constants/pagecalculator.js';
-
 
 import axios from 'axios';
 
@@ -17,8 +15,7 @@ class BrowsePage extends Component {
   }
 
   loadInitalData = () => {
-    const pageNumber = pageCalculator(this.props.pageNumber, PAGEAMOUNT)
-    const params = {pageNumber: pageNumber, productGroup: this.props.productGroup, pageAmount: PAGEAMOUNT}
+    const params = {pageNumber: this.props.pageNumber, productGroup: this.props.productGroup, pageAmount: PAGEAMOUNT}
     axios.post(`http://localhost:58080/data`, { params })
     .then(data => {
       this.props.dispatch(itemDataCreator(data.data.docs))
@@ -51,7 +48,7 @@ const basicContainerStyle = {
 
 const mapStateToprops = (state, ownProps) => ({
   pageNumber: parseInt(ownProps.match.params.page, 10),
-  productGroup: parseInt(ownProps.match.params.productgroup, 10)
+  productGroup: ownProps.match.params.productgroup
 })
 
 export default connect(mapStateToprops)(BrowsePage);

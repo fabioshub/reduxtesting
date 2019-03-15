@@ -4,7 +4,6 @@ import Paginator from './paginator.js';
 import { itemDataCreator, resetCurrentItemData } from '../actions/actions.js';
 import { withRouter } from 'react-router-dom';
 import { PAGEAMOUNT } from '../constants/otherConstant.js';
-import { pageCalculator } from '../constants/pagecalculator.js'
 
 import axios from 'axios';
 
@@ -21,8 +20,7 @@ class paginationContainer extends Component {
     fetchItemData(page) {
         //needed to delete current items in redux store
         this.props.dispatch(resetCurrentItemData);
-        const pageNumber = pageCalculator(page, PAGEAMOUNT)
-        const params = {pageNumber: pageNumber, productGroup: this.props.productGroup, pageAmount: PAGEAMOUNT}
+        const params = {pageNumber: page, productGroup: this.props.productGroup, pageAmount: PAGEAMOUNT}
         axios.post(`http://localhost:58080/data`, { params })
         .then(data => {
           this.props.dispatch(itemDataCreator(data.data.docs))
@@ -41,8 +39,12 @@ class paginationContainer extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state, ownProps) => {
+    
+    return {
      currentpage: parseInt(ownProps.match.params.page, 10),
-     productGroup: parseInt(ownProps.match.params.productgroup, 10)
-})
+     productGroup: ownProps.match.params.productgroup
+    }
+}
+
 export default withRouter(connect(mapStateToProps)(paginationContainer));

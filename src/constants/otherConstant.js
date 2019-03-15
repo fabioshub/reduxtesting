@@ -1,1 +1,1 @@
-export const PAGEAMOUNT = 9;
+export const PAGEAMOUNT = 12;
