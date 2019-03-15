@@ -15,7 +15,7 @@ class itemsContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    items: state.itemdata
+    items: state.main.itemdata
 })
 
 export default connect(mapStateToProps)(itemsContainer);

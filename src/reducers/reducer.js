@@ -1,4 +1,8 @@
-export const mainreducer = (state, action) => {
+const initialState = {
+    currentpage: 1,
+};
+
+export const mainreducer = (state = initialState, action) => {
 
     switch(action.type) {
 

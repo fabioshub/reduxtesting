@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {push} from 'connected-react-router';
 import Paginator from './paginator.js';
 import { itemDataCreator, resetCurrentItemData } from '../actions/actions.js';
 import { withRouter } from 'react-router-dom';
@@ -12,7 +13,7 @@ class paginationContainer extends Component {
 
     updateCurrentPage = (newPage) => {
         if (newPage > 0 ) {
-            this.props.history.push(`/browse/${this.props.productGroup}/${newPage}`)
+            this.props.dispatch(push(`/browse/${this.props.productGroup}/${newPage}`))
             this.fetchItemData(newPage)
         }
     }
@@ -41,6 +42,7 @@ class paginationContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     
+
     return {
      currentpage: parseInt(ownProps.match.params.page, 10),
      productGroup: ownProps.match.params.productgroup
