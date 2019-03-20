@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import {ConnectedRouter as Router} from 'connected-react-router';
 import BrowsePage from '../pages/browsepage.js';
 import history from '../constants/history';
+import categoryPage from '../pages/categorypage.js';
+import ProductGroupPage from '../pages/productgrouppage.js';
 
 export class CustomRouter extends Component {
 
@@ -10,6 +12,8 @@ export class CustomRouter extends Component {
         return (
             <Router history={history}>
                 <Switch>
+                    <Route exact path='/category' component={categoryPage}></Route>
+                    <Route exact path='/category/:category' component={ProductGroupPage}></Route>
                     <Route exact path='/browse/:productgroup/:page' component={BrowsePage}></Route>
                 </Switch>
             </Router>            

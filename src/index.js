@@ -5,10 +5,11 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { store } from './store/store.js';
 import { CustomRouter } from './routing/routingHandling.js';
-
+import HeaderContainer from './header/headerContainer.js'
 
 ReactDOM.render(
     <Provider store={store}>
+        <HeaderContainer />
         <CustomRouter />
     </Provider>
     

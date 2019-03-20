@@ -15,3 +15,24 @@ export const resetCurrentItemData = {
     type: "RESETITEMDATA",
     payload: null
 }
+
+export const maxPageSetter = (page) => {
+    return {
+        type: "MAXPAGENUMBER",
+        payload: page
+    }
+}
+
+export const categoryDataCreator = (data) => {
+    return {
+        type: "CATEGORYDATA",
+        payload: data
+    }
+}
+
+export const productGroupDataCreator = (data) => {
+    return {
+        type: "PRODUCTGROUPDATA",
+        payload: data
+    }
+}

@@ -10,14 +10,14 @@ export default class Items extends Component {
                     <img src={item.imageSmall} alt={index} style={itemStyle.pictureStyle}></img>
                     <hr style={itemStyle.hrStyle}/>
                     <span style={itemStyle.titleStyle}>{item.description}</span>
-                    <div style={itemStyle.metaStyle} className="text-left">
+                    <div style={itemStyle.metaStyle} className="text-center">
                         <br/>
                         <span style={itemStyle.idStyle}>{item.size}</span>
                         <br/>
                         <span style={itemStyle.rdStyle}>{item.collection}</span>
                        
                     </div>
-                    <span style={itemStyle.priceStyle}>{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(item.consumerPrice)}</span>
+                    <span style={itemStyle.priceStyle}>{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(item.price)}</span>
                 </Col>
             )
         })
@@ -40,8 +40,8 @@ const itemStyle = {
         margin: "0 0 50px 0"
     },
     titleStyle: {
-        fontWeight: "200",
-        padding: "0 20px"
+        padding: "0 20px",
+        fontWeight: "500"
     },
     idStyle: {
         fontSize: "0.8em",
@@ -56,10 +56,11 @@ const itemStyle = {
     },
     priceStyle: {
         fontWeight: "500",
-        fontSize: "0.9em",
+        fontSize: "1em",
     },
     metaStyle: {
-        alignText: "left"
+        alignText: "left",
+        marginBottom: "10px"
     },
     hrStyle: {
         width: "40%"

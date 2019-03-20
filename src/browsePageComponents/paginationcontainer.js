@@ -10,7 +10,6 @@ import axios from 'axios';
 
 
 class paginationContainer extends Component {
-
     updateCurrentPage = (newPage) => {
         if (newPage > 0 ) {
             this.props.dispatch(push(`/browse/${this.props.productGroup}/${newPage}`))
@@ -34,7 +33,7 @@ class paginationContainer extends Component {
             <Paginator 
             updateCurrentPage={this.updateCurrentPage}
             currentpage={this.props.currentpage}
-
+            maxPageNumber={this.props.maxPageNumber}
             />
         );
     }
@@ -42,10 +41,10 @@ class paginationContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     
-
     return {
      currentpage: parseInt(ownProps.match.params.page, 10),
-     productGroup: ownProps.match.params.productgroup
+     productGroup: ownProps.match.params.productgroup,
+     maxPageNumber: state.main.maxpagenumber
     }
 }
 

@@ -19,6 +19,21 @@ export const mainreducer = (state = initialState, action) => {
                 ...state,
                 itemdata: action.payload
             }
+        case 'MAXPAGENUMBER':
+            return {
+                ...state,
+                maxpagenumber: action.payload
+            }
+        case 'CATEGORYDATA':
+            return {
+                ...state,
+                categorydata: action.payload
+            }
+        case 'PRODUCTGROUPDATA':
+            return {
+                ...state,
+                productgroupdata: action.payload
+            }
         default:
             return state;
     }
