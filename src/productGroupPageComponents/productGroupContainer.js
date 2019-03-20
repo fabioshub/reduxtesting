@@ -13,7 +13,8 @@ class ProductGroupContainer extends Component {
     }
     
     loadInitalData = () => {
-        axios.get(`http://localhost:58080/allproductgroups`)
+        const params = {categoryToProductGroupCode: this.props.category}
+        axios.post(`http://localhost:58080/allproductgroups`, {params})
         .then(data => {
                 this.props.dispatch(productGroupDataCreator(data.data));
             });
