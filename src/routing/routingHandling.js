@@ -12,9 +12,9 @@ export class CustomRouter extends Component {
         return (
             <Router history={history}>
                 <Switch>
-                    <Route exact path='/category' component={categoryPage}></Route>
-                    <Route exact path='/category/:category' component={ProductGroupPage}></Route>
-                    <Route exact path='/browse/:productgroup/:page' component={BrowsePage}></Route>
+                    <Route exact path='/' component={categoryPage}></Route>
+                    <Route exact path='/:category' component={ProductGroupPage}></Route>
+                    <Route exact path='/:category/:productgroup/:page' component={BrowsePage}></Route>
                 </Switch>
             </Router>            
         );

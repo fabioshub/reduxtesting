@@ -31,6 +31,8 @@ export default class Category extends Component {
     }
 }
 
+
+
 const itemStyle = {
     containerStyle: {
         padding: "5px",

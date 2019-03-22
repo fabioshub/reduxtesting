@@ -4,39 +4,45 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { categoryDataCreator } from '../actions/actions';
 import {push} from 'connected-react-router';
+import {withRouter } from 'react-router-dom'
+import { categoriesEndpoint } from '../config/ptc-config';
+import { CATEGORIES } from '../extra/hardcodedFiles/categories.js' 
 
 
 class CategoryContainer extends Component {
 
     componentDidMount() {
-        this.loadInitalData()
+        // if (!this.props.categoryData) {
+        //     this.loadInitalData()
+        // }
+        // KEEP THIS IN IN CASE OF SWITCH TO API FROM LOCAL
     }
     
     loadInitalData = () => {
-        axios.get(`http://localhost:58080/categories`)
+        axios.get(categoriesEndpoint)
         .then(data => {
                 this.props.dispatch(categoryDataCreator(data.data));
             });
     }
 
     dispatchProductGroupCode = (productGroupCode) => {
-        this.props.dispatch(push(productGroupCode));
+        this.props.dispatch(push('/'+productGroupCode));
     }
 
     render() {
         return (
             <Category 
-                data={this.props.categoryData}
+                data={CATEGORIES}
                 dispatchProductGroupCode={this.dispatchProductGroupCode}
             />
         );
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
         categoryData: state.main.categorydata,
     }
 }
 
-export default connect(mapStateToProps)(CategoryContainer);
+export default withRouter(connect(mapStateToProps)(CategoryContainer));
