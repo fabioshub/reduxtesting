@@ -1,3 +1,9 @@
+import { endpoint, itemImageEndpoint } from "../../config/ptc-config";
+
 export const imageUrlConstructor = (urlPart) => {
-    return 'https://api.ptmd.nl/rest/images/v1/bigger/' + urlPart
+    return  itemImageEndpoint + urlPart
+}
+
+export const imageUrlConstructorProductGroups = (urlPart) => {
+    return endpoint + urlPart
 }

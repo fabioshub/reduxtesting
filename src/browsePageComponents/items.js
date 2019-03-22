@@ -4,17 +4,20 @@ import { Container, Row, Col } from 'react-bootstrap';
 export default class Items extends Component {
 
     renderItems() {
+
         return this.props.data.map((item, index) => {
             return (
                 <Col style={itemStyle.containerStyle} key={index} sm={4}>
                     <img src={item.imageSmall} alt={index} style={itemStyle.pictureStyle}></img>
-                    <hr style={itemStyle.hrStyle}/>
+                    <br />
                     <span style={itemStyle.titleStyle}>{item.description}</span>
-                    <div style={itemStyle.metaStyle} className="text-center">
+                    <div style={itemStyle.metaStyle} className="text-left">
                         <br/>
-                        <span style={itemStyle.idStyle}>{item.size}</span>
+                        <span style={itemStyle.idStyle}>{item.sku}</span>
                         <br/>
                         <span style={itemStyle.rdStyle}>{item.collection}</span>
+                        <br />
+                        <span style={itemStyle.idStyle}>{item.size}</span>
                        
                     </div>
                     <span style={itemStyle.priceStyle}>{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(item.price)}</span>
@@ -47,20 +50,20 @@ const itemStyle = {
         fontSize: "0.8em",
     },
     pictureStyle: {
-        width: "80px",
-        maxHeight: "80px",
+        width: "100px",
+        maxHeight: "100px",
         margin: "10px 0 10px 0"
     },
     rdStyle: {
         fontSize: "0.8em",
     },
     priceStyle: {
-        fontWeight: "500",
+        fontWeight: "700",
         fontSize: "1em",
     },
     metaStyle: {
         alignText: "left",
-        marginBottom: "10px"
+        marginBottom: "20px"
     },
     hrStyle: {
         width: "40%"

@@ -6,10 +6,15 @@ import { Provider } from 'react-redux';
 import { store } from './store/store.js';
 import { CustomRouter } from './routing/routingHandling.js';
 import HeaderContainer from './header/headerContainer.js'
+import SearchBar from './searchbar/searchBar';
+import { Navbar } from 'react-bootstrap';
 
 ReactDOM.render(
     <Provider store={store}>
         <HeaderContainer />
+        <Navbar fixed="top" id="searchBar" style={{marginTop: "16vh", background: "black"}}>
+            <SearchBar/>
+        </Navbar>
         <CustomRouter />
     </Provider>
     

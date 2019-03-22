@@ -6,12 +6,22 @@ export default class SearchBar extends Component {
         return (
             <InputGroup className="mb-3">
                 <FormControl
-                    placeholder="item..."
+                    placeholder="Zoeken..."
                 />
                 <InputGroup.Append>
-                    <Button variant="outline-secondary">Zoeken</Button>
+                    <Button style={styles.button}>Zoeken</Button>
                 </InputGroup.Append>
             </InputGroup>
         );
+    }
+}
+
+const styles = {
+    formStyle: {
+        background: "black"
+    },
+    button: {
+        background: "grey",
+        border: "none"
     }
 }
