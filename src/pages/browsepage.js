@@ -37,7 +37,7 @@ class BrowsePage extends Component {
         navLink += productgroup.names.NLD
         productgroup.productgroupsitem.forEach(productgroupitem => {
           if (productgroupitem.productgroup === this.props.productGroup) {
-            navLink += ' ... '
+            navLink += '  >  '
             navLink += productgroupitem.name
           }
         })
