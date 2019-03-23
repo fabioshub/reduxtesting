@@ -5,19 +5,14 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { store } from './store/store.js';
 import { CustomRouter } from './routing/routingHandling.js';
-import HeaderContainer from './header/headerContainer.js'
-import SearchBar from './searchbar/searchBar';
-import { Navbar } from 'react-bootstrap';
+import HeaderContainer from './header/headerContainer.js';
 
 ReactDOM.render(
     <Provider store={store}>
         <HeaderContainer />
-        <Navbar fixed="top" id="searchBar" style={{marginTop: "16vh", background: "black"}}>
-            <SearchBar/>
-        </Navbar>
         <CustomRouter />
     </Provider>
-    
+
     , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

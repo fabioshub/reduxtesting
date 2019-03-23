@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
-import { imageUrlConstructor } from '../extra/apiHelper/imagesUrlConstructor';
-import Axios from 'axios';
 
 export default class ProductGroup extends Component {
 
@@ -10,7 +8,7 @@ export default class ProductGroup extends Component {
 
         return this.props.data.map((item, index) => {
             return (
-                <Col onClick={() => {this.callProductGroup(item.productgroup)}} style={itemStyle.containerStyle} key={index} sm={4}>
+                <Col onClick={() => { this.callProductGroup(item.productgroup) }} style={itemStyle.containerStyle} key={index} sm={4}>
                     <span style={itemStyle.titleStyle}>{item.name}</span>
                     <br />
                     <img src={item.image} alt={index} style={itemStyle.pictureStyle}></img>
@@ -19,12 +17,12 @@ export default class ProductGroup extends Component {
         })
     }
 
-    
+
     callProductGroup = (productGroupCode) => {
         this.props.dispatchProductGroupCode(productGroupCode)
     }
 
-    
+
     render() {
         return this.props.data ? (
             <Container>

@@ -3,9 +3,9 @@ import ProductGroup from './productGroup';
 import { connect } from 'react-redux';
 
 import { withRouter } from 'react-router-dom';
-import { productGroupDataCreator } from '../actions/actions';
+import { productGroupDataCreator, navLinkUpdater } from '../actions/actions';
 import { push } from 'connected-react-router';
-import { PRODUCTGROUPS } from '../extra/hardcodedFiles/productgroups.js' 
+import { PRODUCTGROUPS } from '../extra/hardcodedFiles/productgroups.js'
 
 class ProductGroupContainer extends Component {
 
@@ -20,13 +20,12 @@ class ProductGroupContainer extends Component {
         //         this.props.dispatch(productGroupDataCreator(data.data));
         //     });
         // KEEP THIS IN IN CASE OF API SWITCH FROM LOCAL
-
         PRODUCTGROUPS.forEach(pgItem => {
             if (pgItem.category === this.props.category) {
-                console.log(pgItem)
+                this.props.dispatch(navLinkUpdater(pgItem.names.NLD));
                 this.props.dispatch(productGroupDataCreator(pgItem.productgroupsitem));
             }
-        })
+        });
     };
 
     dispatchProductGroupCode = (productGroupCode) => {

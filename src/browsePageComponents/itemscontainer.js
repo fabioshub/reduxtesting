@@ -8,19 +8,23 @@ import { resetCurrentItemData } from '../actions/actions.js';
 class itemsContainer extends Component {
     componentDidMount() {
         this.props.dispatch(resetCurrentItemData);
+        // this.props.dispatch(productGroupDataCreator(pgItem.productgroupsitem));
+
     }
 
     render() {
         return (
-            <Items 
-            data = {this.props.items}
+            <Items
+                data={this.props.items}
             />
         );
     }
 }
 
-const mapStateToProps = (state) => ({
-    items: state.main.itemdata
-})
+const mapStateToProps = (state) => {
+    return {
+        items: state.main.itemdata
+    }
+}
 
 export default connect(mapStateToProps)(itemsContainer);

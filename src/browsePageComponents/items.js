@@ -7,25 +7,25 @@ export default class Items extends Component {
 
         return this.props.data.map((item, index) => {
             return (
-                <Col style={itemStyle.containerStyle} key={index} sm={4}>
+                <Col style={itemStyle.containerStyle} key={index} sm={4} >
                     <img src={item.imageSmall} alt={index} style={itemStyle.pictureStyle}></img>
                     <br />
                     <span style={itemStyle.titleStyle}>{item.description}</span>
                     <div style={itemStyle.metaStyle} className="text-left">
-                        <br/>
+                        <br />
                         <span style={itemStyle.idStyle}>{item.sku}</span>
-                        <br/>
+                        <br />
                         <span style={itemStyle.rdStyle}>{item.collection}</span>
                         <br />
                         <span style={itemStyle.idStyle}>{item.size}</span>
-                       
+
                     </div>
                     <span style={itemStyle.priceStyle}>{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(item.price)}</span>
                 </Col>
             )
         })
     }
-    
+
     render() {
         return this.props.data ? (
             <Container>

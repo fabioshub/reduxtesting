@@ -36,3 +36,10 @@ export const productGroupDataCreator = (data) => {
         payload: data
     }
 }
+
+export const navLinkUpdater = (navItem) => {
+    return {
+        type: "NAVLINKUPDATER",
+        payload: navItem
+    }
+}

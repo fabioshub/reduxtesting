@@ -4,7 +4,7 @@ const initialState = {
 
 export const mainreducer = (state = initialState, action) => {
 
-    switch(action.type) {
+    switch (action.type) {
 
         case 'BASICTEXTACTION':
             return {
@@ -12,7 +12,7 @@ export const mainreducer = (state = initialState, action) => {
                 text: action.payload
             }
         case 'ITEMDATA':
-            return Object.assign({}, state,  {itemdata: action.payload})
+            return Object.assign({}, state, { itemdata: action.payload })
         case 'RESETITEMDATA':
             //this is needed for temp. deleting the item data so 'loading items' gets displayed'
             return {
@@ -33,6 +33,11 @@ export const mainreducer = (state = initialState, action) => {
             return {
                 ...state,
                 productgroupdata: action.payload
+            }
+        case 'NAVLINKUPDATER':
+            return {
+                ...state,
+                navlink: action.payload
             }
         default:
             return state;

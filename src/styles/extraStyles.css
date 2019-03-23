@@ -1,0 +1,6 @@
+.MuiTouchRipple-root-14{
+    display: hidden;
+}
+button:focus {
+    outline:none;
+}

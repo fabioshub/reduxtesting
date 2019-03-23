@@ -48,7 +48,12 @@ import Decoratiehanger from '../images/productgroups/Accessoires/Decoratiehanger
 export const PRODUCTGROUPS = [//catCode
 	{
 		category: "3",
-		name: "potten en schalen",
+		names: {
+			"FRA": "Pots & Bols",
+			"DEU": "Töpfe & Schalen",
+			"NLD": "Potten & Schalen",
+			"ENU": "Pots & Bowls"
+		},
 		productgroupsitem: [
 
 			{
@@ -85,7 +90,12 @@ export const PRODUCTGROUPS = [//catCode
 	},
 	{
 		category: "7",
-		name: "stoffen en paints",
+		names: {
+			"FRA": "Tissus & Peinture",
+			"DEU": "Textilien & Farbe",
+			"NLD": "Stoffen & Verf",
+			"ENU": "Fabrics & Paint"
+		},
 		productgroupsitem: [
 
 			{
@@ -113,7 +123,12 @@ export const PRODUCTGROUPS = [//catCode
 	},
 	{
 		category: "6",
-		name: "planten",
+		names: {
+			"FRA": "Plantes artificielle",
+			"DEU": "Kunstpflanzen",
+			"NLD": "Kunstplanten",
+			"ENU": "Artificial plants"
+		},
 		productgroupsitem: [
 
 			{
@@ -125,6 +140,12 @@ export const PRODUCTGROUPS = [//catCode
 	},
 	{
 		category: "4",
+		names: {
+			"FRA": "Cuisine",
+			"DEU": "Küche",
+			"NLD": "Keuken",
+			"ENU": "Kitchen"
+		},
 		productgroupsitem: [
 
 			{
@@ -152,7 +173,9 @@ export const PRODUCTGROUPS = [//catCode
 	},
 	{
 		category: "1",
-		name: "Keuken",
+		names: {
+			"NLD": "Klein meubelen",
+		},
 		productgroupsitem: [
 
 			{
@@ -180,7 +203,12 @@ export const PRODUCTGROUPS = [//catCode
 	},
 	{
 		category: "5",
-		name: "Wanddecoratie",
+		names: {
+			"FRA": "Déco murale",
+			"DEU": "Wanddekoration",
+			"NLD": "Wanddecoratie",
+			"ENU": "Wall decoration"
+		},
 		productgroupsitem: [
 
 			{
@@ -218,7 +246,12 @@ export const PRODUCTGROUPS = [//catCode
 	},
 	{
 		category: "11",
-		name: "Verlichting",
+		names: {
+			"FRA": "Luminaires",
+			"DEU": "Beleuchtung",
+			"NLD": "Verlichting",
+			"ENU": "Lighting"
+		},
 		productgroupsitem: [
 
 			{
@@ -251,7 +284,12 @@ export const PRODUCTGROUPS = [//catCode
 	},
 	{
 		category: "10",
-		name: "accessoires",
+		names: {
+			"FRA": "Accessoires",
+			"DEU": "Zubehör",
+			"NLD": "Accessoires",
+			"ENU": "Accessories"
+		},
 		productgroupsitem: [
 
 			{
