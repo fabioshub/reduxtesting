@@ -43,3 +43,10 @@ export const navLinkUpdater = (navItem) => {
         payload: navItem
     }
 }
+
+export const setSearchTerm = (searchTerm) => {
+    return {
+        type: "SETSEARCHTERM",
+        payload: searchTerm
+    }
+}

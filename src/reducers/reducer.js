@@ -39,6 +39,11 @@ export const mainreducer = (state = initialState, action) => {
                 ...state,
                 navlink: action.payload
             }
+        case 'SETSEARCHTERM':
+            return {
+                ...state,
+                searchterm: action.payload
+            }
         default:
             return state;
     }

@@ -13,7 +13,7 @@ class HeaderContainer extends Component {
         return (
             <div className='fixed-top'>
                 <Header navLink={this.props.navLink} />
-                <SearchBar navLink={this.props.navLink} />
+                <SearchBar navLink={this.props.navLink} searchTerm={this.props.searchTerm} />
                 {this.props.navLink ? <FabBar /> : null}
             </div>
         );
@@ -22,7 +22,8 @@ class HeaderContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        navLink: state.main.navlink
+        navLink: state.main.navlink,
+        searchTerm: state.main.searchterm
     }
 }
 
