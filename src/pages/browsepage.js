@@ -11,6 +11,7 @@ import axios from 'axios';
 import { dataEndpoint } from '../config/ptc-config.js';
 import { COMBINEDPRODUCTGROUPS } from '../extra/hardcodedFiles/combinedProductGroups.js';
 import { PRODUCTGROUPS } from '../extra/hardcodedFiles/productgroups.js';
+import { CATEGORIES } from '../extra/hardcodedFiles/categories.js';
 
 
 class BrowsePage extends Component {
@@ -31,19 +32,19 @@ class BrowsePage extends Component {
   }
 
   navLinkUpdater = () => {
-    let navLink = '';
-    PRODUCTGROUPS.forEach(productgroup => {
-      if (parseInt(productgroup.category, 10) === this.props.category) {
-        navLink += productgroup.names.NLD
-        productgroup.productgroupsitem.forEach(productgroupitem => {
-          if (productgroupitem.productgroup === this.props.productGroup) {
-            navLink += '  >  '
-            navLink += productgroupitem.name
+    CATEGORIES.forEach(categorie => {
+      if (parseInt(categorie.code, 10) === this.props.category) {
+        PRODUCTGROUPS.forEach(productGroup => {
+          if (productGroup.category === categorie.code) {
+            productGroup.productgroupsitem.forEach(productgroupitem => {
+              if (productgroupitem.productgroup === this.props.productGroup) {
+                this.props.dispatch(navLinkUpdater({ name: categorie.names.NLD, categorie: parseInt(categorie.code, 10), productgroup: productgroupitem.name }));
+              }
+            })
           }
         })
       }
     })
-    this.props.dispatch(navLinkUpdater(navLink));
   }
 
 

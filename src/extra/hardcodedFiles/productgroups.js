@@ -44,16 +44,9 @@ import Wijnkoelers from '../images/productgroups/Accessoires/wijnkoelers.jpg';
 import Opbergen from '../images/productgroups/Accessoires/Opbergen.jpg';
 import Decoratiehanger from '../images/productgroups/Accessoires/Decoratiehanger.jpg';
 
-
 export const PRODUCTGROUPS = [//catCode
 	{
 		category: "3",
-		names: {
-			"FRA": "Pots & Bols",
-			"DEU": "Töpfe & Schalen",
-			"NLD": "Potten & Schalen",
-			"ENU": "Pots & Bowls"
-		},
 		productgroupsitem: [
 
 			{
@@ -90,12 +83,6 @@ export const PRODUCTGROUPS = [//catCode
 	},
 	{
 		category: "7",
-		names: {
-			"FRA": "Tissus & Peinture",
-			"DEU": "Textilien & Farbe",
-			"NLD": "Stoffen & Verf",
-			"ENU": "Fabrics & Paint"
-		},
 		productgroupsitem: [
 
 			{
@@ -123,12 +110,6 @@ export const PRODUCTGROUPS = [//catCode
 	},
 	{
 		category: "6",
-		names: {
-			"FRA": "Plantes artificielle",
-			"DEU": "Kunstpflanzen",
-			"NLD": "Kunstplanten",
-			"ENU": "Artificial plants"
-		},
 		productgroupsitem: [
 
 			{
@@ -140,12 +121,6 @@ export const PRODUCTGROUPS = [//catCode
 	},
 	{
 		category: "4",
-		names: {
-			"FRA": "Cuisine",
-			"DEU": "Küche",
-			"NLD": "Keuken",
-			"ENU": "Kitchen"
-		},
 		productgroupsitem: [
 
 			{
@@ -173,9 +148,6 @@ export const PRODUCTGROUPS = [//catCode
 	},
 	{
 		category: "1",
-		names: {
-			"NLD": "Klein meubelen",
-		},
 		productgroupsitem: [
 
 			{
@@ -203,12 +175,6 @@ export const PRODUCTGROUPS = [//catCode
 	},
 	{
 		category: "5",
-		names: {
-			"FRA": "Déco murale",
-			"DEU": "Wanddekoration",
-			"NLD": "Wanddecoratie",
-			"ENU": "Wall decoration"
-		},
 		productgroupsitem: [
 
 			{
@@ -246,12 +212,6 @@ export const PRODUCTGROUPS = [//catCode
 	},
 	{
 		category: "11",
-		names: {
-			"FRA": "Luminaires",
-			"DEU": "Beleuchtung",
-			"NLD": "Verlichting",
-			"ENU": "Lighting"
-		},
 		productgroupsitem: [
 
 			{
@@ -284,12 +244,6 @@ export const PRODUCTGROUPS = [//catCode
 	},
 	{
 		category: "10",
-		names: {
-			"FRA": "Accessoires",
-			"DEU": "Zubehör",
-			"NLD": "Accessoires",
-			"ENU": "Accessories"
-		},
 		productgroupsitem: [
 
 			{

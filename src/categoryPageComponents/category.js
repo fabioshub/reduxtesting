@@ -47,8 +47,8 @@ const itemStyle = {
     },
     pictureStyle: {
         borderRadius: "5px",
-        width: "200px",
-        maxHeight: "200px",
+        width: "220px",
+        maxHeight: "220px",
         margin: "10px 0 10px 0"
     },
     rdStyle: {

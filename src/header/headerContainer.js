@@ -12,11 +12,9 @@ class HeaderContainer extends Component {
     render() {
         return (
             <div className='fixed-top'>
-                <Header
-                    navLink={this.props.navLink}
-                />
-                <SearchBar />
-                <FabBar />
+                <Header navLink={this.props.navLink} />
+                <SearchBar navLink={this.props.navLink} />
+                {this.props.navLink ? <FabBar /> : null}
             </div>
         );
     }

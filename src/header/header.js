@@ -14,8 +14,7 @@ const styles = {
         height: '80px'
     },
     navbar: {
-        background: "black",
-
+        background: "rgba(0, 0, 0, 0.8)",
     },
     fav: {
         color: "white",
@@ -39,11 +38,6 @@ export default class Header extends Component {
                     </Col>
                     <Col>
                         <i className="fa fa-heart" style={styles.fav}></i>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className='text-right'>
-                        <span style={styles.navLink}>{this.props.navLink}</span>
                     </Col>
                 </Row>
             </Container>
