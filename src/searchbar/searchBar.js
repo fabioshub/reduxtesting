@@ -22,7 +22,7 @@ class SearchBar extends Component {
                         placeholder="Zoeken..."
                     />
                     <InputGroup.Append>
-                        {this.props.navLink ? <InputGroup.Text onClick={history.goBack}>{this.props.navLink.name}</InputGroup.Text> : null}
+                        {this.props.navLink ? <InputGroup.Text style={styles.navLink} onClick={history.goBack}>{this.props.navLink.category}</InputGroup.Text> : null}
                         {this.props.navLink ? this.props.navLink.productgroup ? <InputGroup.Text>{this.props.navLink.productgroup ? this.props.navLink.productgroup : '...'}</InputGroup.Text> : null : null}
                         <Button style={styles.button}>Zoeken</Button>
                     </InputGroup.Append>
@@ -45,7 +45,9 @@ const styles = {
     },
     inputs: {
         outline: 'none',
-        border: 'none'
+        border: 'none',
+    },
+    navLink: {
     }
 }
 export default connect()(SearchBar)

@@ -31,7 +31,6 @@ class FabBar extends Component {
                         <Fab style={styles.fabBack} onClick={history.goBack}>
                             <i className="fa fa-angle-left" aria-hidden="true" style={styles.plusIconStyle}></i>
                         </Fab>
-
                     </Col>
                     <Col className='text-right'>
                         <Fab style={styles.fabHome} onClick={() => { this.props.dispatch(push('/')) }}>
@@ -39,7 +38,6 @@ class FabBar extends Component {
                         </Fab>
                     </Col>
                 </Row>
-
             </Container>
 
         );

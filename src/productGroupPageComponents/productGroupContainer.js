@@ -28,7 +28,7 @@ class ProductGroupContainer extends Component {
         });
         CATEGORIES.forEach(categorie => {
             if (categorie.code === this.props.category) {
-                this.props.dispatch(navLinkUpdater({ name: categorie.names.NLD, category: categorie.code }));
+                this.props.dispatch(navLinkUpdater({ category: categorie.names.NLD, categoryCode: categorie.code }));
             }
         })
     };
