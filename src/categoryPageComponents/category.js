@@ -7,9 +7,9 @@ export default class Category extends Component {
     renderCategories() {
         return this.props.data.map((item, index) => {
             return (
-                <Col onClick={() => { this.callProductGroup(item.code) }} style={itemStyle.containerStyle} key={item.code} sm={4}>
+                <Col onClick={() => { this.callProductGroup(item.code) }} style={itemStyle.containerStyle} key={item.code} sm={4} md={6}>
                     <span style={itemStyle.titleStyle}>{item.names.NLD}</span>
-                    <br />
+                    <hr style={itemStyle.hrStyle} />
                     <img src={imageUrlConstructor(item.image)} alt={index} style={itemStyle.pictureStyle}></img>
                 </Col>
             )
@@ -35,20 +35,20 @@ export default class Category extends Component {
 
 const itemStyle = {
     containerStyle: {
-        padding: "5px",
-        margin: "0 0 20px 0"
+        padding: "0px",
+        margin: "0 0 25px 0"
     },
     titleStyle: {
-        padding: "0 20px",
-        fontWeight: "500"
+        // padding: "0 20px",
+        fontSize: "15px"
     },
     idStyle: {
         fontSize: "0.8em",
     },
     pictureStyle: {
         borderRadius: "5px",
-        width: "220px",
-        maxHeight: "220px",
+        // width: "220px",
+        maxHeight: "300px",
         margin: "10px 0 10px 0"
     },
     rdStyle: {

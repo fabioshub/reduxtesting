@@ -44,6 +44,11 @@ export const mainreducer = (state = initialState, action) => {
                 ...state,
                 searchterm: action.payload
             }
+        case 'SETITEMPAGE':
+            return {
+                ...state,
+                item: action.payload
+            }
         default:
             return state;
     }

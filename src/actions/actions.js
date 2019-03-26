@@ -50,3 +50,10 @@ export const setSearchTerm = (searchTerm) => {
         payload: searchTerm
     }
 }
+
+export const setItemPage = (item) => {
+    return {
+        type: "SETITEMPAGE",
+        payload: item
+    }
+}

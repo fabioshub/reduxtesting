@@ -8,9 +8,9 @@ export default class ProductGroup extends Component {
 
         return this.props.data.map((item, index) => {
             return (
-                <Col onClick={() => { this.callProductGroup(item.productgroup) }} style={itemStyle.containerStyle} key={index} sm={4}>
+                <Col onClick={() => { this.callProductGroup(item.productgroup) }} style={itemStyle.containerStyle} key={index} sm={4} md={6}>
                     <span style={itemStyle.titleStyle}>{item.name}</span>
-                    <br />
+                    <hr style={itemStyle.hrStyle} />
                     <img src={item.image} alt={index} style={itemStyle.pictureStyle}></img>
                 </Col>
             )
@@ -39,7 +39,7 @@ const itemStyle = {
     containerStyle: {
         alignText: "center",
         padding: "5px",
-        margin: "0 0 20px 0"
+        margin: "0 0 25px 0"
     },
     titleStyle: {
         padding: "0 20px",
@@ -50,8 +50,7 @@ const itemStyle = {
     },
     pictureStyle: {
         borderRadius: "5px",
-        width: "200px",
-        maxHeight: "200px",
+        maxWidth: "300px",
         margin: "10px 0 10px 0"
     },
     rdStyle: {

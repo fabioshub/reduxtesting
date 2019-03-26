@@ -1,27 +1,39 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import '../styles/headerStyle.css';
 import logo from '../extra/images/ptmd-logo2016-def.png';
 import designedWithPassion from '../extra/images/DesignedWithPassion.png';
 import 'font-awesome/css/font-awesome.min.css';
+import history from '../constants/history'
 
 
 const styles = {
     logoStyle: {
-        height: '140px'
+        height: '80px',
+        marginTop: '10px'
     },
     DWP: {
-        height: '80px'
+        height: '80px',
     },
     navbar: {
         background: "rgba(0, 0, 0, 0.8)",
+
     },
     fav: {
         color: "white",
         fontSize: "50px",
     },
     navLink: {
-        color: 'white'
+        color: 'black',
+        background: 'white',
+        border: 'none',
+        padding: '2px 8px',
+        fontSize: '16px',
+        marginLeft: '7px',
+        borderRadius: '2px'
+    },
+    delete: {
+        color: 'darkred'
     }
 }
 
@@ -40,6 +52,12 @@ export default class Header extends Component {
                         <i className="fa fa-heart" style={styles.fav}></i>
                     </Col>
                 </Row>
+                {/* <Row>
+                    <Col className="text-right">
+                        {this.props.navLink ? <Button style={styles.navLink} onClick={history.goBack}>{this.props.navLink.category} <i style={styles.delete} class="fa fa-times" aria-hidden="true"></i></Button> : null}
+                        {this.props.navLink ? this.props.navLink.productgroup ? <Button style={styles.navLink} onClick={history.goBack}>{this.props.navLink.productgroup} <i style={styles.delete} class="fa fa-times" aria-hidden="true"></i></Button> : null : null}
+                    </Col>
+                </Row> */}
             </Container>
         );
     }

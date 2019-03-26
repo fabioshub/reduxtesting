@@ -4,3 +4,28 @@
 button:focus {
     outline:none;
 }
+
+@font-face {
+    font-family: 'PlayFair Display';
+    font-style: normal;
+    font-weight: 500;
+    src:
+        local('PlayFair Display')
+        url(../extra/fonts/PlayfairDisplaySC-Regular.otf) format('otf')
+}
+
+ProductItemPage {
+    font-family: 'Playfair Display'
+}
+
+#searchbar::placeholder {
+    color: white
+}
+
+#searchbar, #searchbar:focus{
+    outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}

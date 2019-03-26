@@ -7,7 +7,7 @@ export default class Items extends Component {
 
         return this.props.data.map((item, index) => {
             return (
-                <Col style={itemStyle.containerStyle} key={index} sm={4} >
+                <Col onClick={() => { this.props.dispatchProductItemPage(item.sku) }} style={itemStyle.containerStyle} key={index} sm={4} md={6}>
                     <img src={item.imageSmall} alt={index} style={itemStyle.pictureStyle}></img>
                     <br />
                     <span style={itemStyle.titleStyle}>{item.description}</span>
@@ -39,7 +39,7 @@ export default class Items extends Component {
 
 const itemStyle = {
     containerStyle: {
-        padding: "5px",
+        padding: "0px 40px",
         margin: "0 0 50px 0"
     },
     titleStyle: {
@@ -50,8 +50,7 @@ const itemStyle = {
         fontSize: "0.8em",
     },
     pictureStyle: {
-        width: "100px",
-        maxHeight: "100px",
+        maxHeight: "300px",
         margin: "10px 0 10px 0"
     },
     rdStyle: {
