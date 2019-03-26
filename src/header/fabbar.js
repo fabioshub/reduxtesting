@@ -49,18 +49,18 @@ class FabBar extends Component {
                     <Col className='text-right'>
 
                         {this.props.navLink ?
-                            <Fab style={styles.fabNavlink} variant={"extended"} onClick={() => { this.props.dispatch(push(`/test`)) }}>
+                            <Fab style={styles.fabNavlink} variant={"extended"} onClick={() => { this.props.dispatch(push(`/`)) }}>
                                 <i style={styles.delete} className="fa fa-times" aria-hidden="true"></i>
                                 {this.props.navLink.category}
                             </Fab>
                             : null}
                         {this.props.navLink ? this.props.navLink.productgroup ?
-                            <Fab style={styles.fabNavlink} variant={"extended"} onClick={() => { this.props.dispatch(push(`/test/${this.props.category}`)) }} extended>
+                            <Fab style={styles.fabNavlink} variant={"extended"} onClick={() => { this.props.dispatch(push(`/${this.props.category}`)) }} extended>
                                 <i style={styles.delete} className="fa fa-times" aria-hidden="true"></i>
                                 {this.props.navLink.productgroup}
                             </Fab>
                             : null : null}
-                        <Fab style={styles.fabHome} onClick={() => { this.props.dispatch(push('/test')) }}>
+                        <Fab style={styles.fabHome} onClick={() => { this.props.dispatch(push('/')) }}>
                             <i className="fa fa-home" aria-hidden="true" style={styles.plusIconStyle}></i>
                         </Fab>
 
