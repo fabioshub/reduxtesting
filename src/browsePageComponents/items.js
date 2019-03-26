@@ -40,7 +40,8 @@ export default class Items extends Component {
 const itemStyle = {
     containerStyle: {
         padding: "0px 40px",
-        margin: "0 0 50px 0"
+        margin: "0 0 50px 0",
+        height: '500px'
     },
     titleStyle: {
         padding: "0 20px",

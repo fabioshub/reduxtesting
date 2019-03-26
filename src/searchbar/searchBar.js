@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { InputGroup, FormControl, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import history from '../constants/history';
 import { setSearchTerm } from '../actions/actions';
 
 class SearchBar extends Component {
@@ -35,7 +34,7 @@ class SearchBar extends Component {
                         placeholder="Zoeken..."
                     />
                     <InputGroup.Append>
-                        <Button style={styles.button} onClick={this.applySearchTerm} >Zoeken</Button>
+                        <Button style={styles.button} onClick={this.applySearchTerm} > <i className="fa fa-search" aria-hidden="true"></i></Button>
                     </InputGroup.Append>
                 </InputGroup>
             </div>
@@ -44,26 +43,26 @@ class SearchBar extends Component {
     }
 }
 
-const stylesBackup = {
-    button: {
-        background: "grey",
-        color: 'white',
-        border: "none",
-        boxShadow: '0 4px 2px -2px rgba(0,0,0,0.4)'
-    },
-    searchContainer: {
-        padding: '10px',
-        background: 'rgba(0, 0, 0, 0.8)',
-    },
-    inputs: {
-        outline: 'none',
-        border: 'none',
-    },
-    navLink: {
-        boxShadow: '0 4px 2px -2px rgba(0,0,0,0.4)',
-        borderRight: '1px solid white'
-    }
-}
+// const stylesBackup = {
+//     button: {
+//         background: "grey",
+//         color: 'white',
+//         border: "none",
+//         boxShadow: '0 4px 2px -2px rgba(0,0,0,0.4)'
+//     },
+//     searchContainer: {
+//         padding: '10px',
+//         background: 'rgba(0, 0, 0, 0.8)',
+//     },
+//     inputs: {
+//         outline: 'none',
+//         border: 'none',
+//     },
+//     navLink: {
+//         boxShadow: '0 4px 2px -2px rgba(0,0,0,0.4)',
+//         borderRight: '1px solid white'
+//     }
+// }
 
 const styles = {
     button: {
@@ -81,7 +80,7 @@ const styles = {
         border: 'none',
         background: 'none',
         color: 'white',
-        borderBottom: '1px solid white'
+        borderBottom: '2px solid white'
     },
     navLink: {
         boxShadow: '0 4px 2px -2px rgba(0,0,0,0.4)',

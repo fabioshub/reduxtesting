@@ -11,7 +11,10 @@ export default class ProductGroup extends Component {
                 <Col onClick={() => { this.callProductGroup(item.productgroup) }} style={itemStyle.containerStyle} key={index} sm={4} md={6}>
                     <span style={itemStyle.titleStyle}>{item.name}</span>
                     <hr style={itemStyle.hrStyle} />
-                    <img src={item.image} alt={index} style={itemStyle.pictureStyle}></img>
+                    <Container style={itemStyle.pictureDiv} className="justify-content-center">
+                        <img src={item.image} alt={index} style={itemStyle.pictureStyle}></img>
+
+                    </Container>
                 </Col>
             )
         })
@@ -37,21 +40,29 @@ export default class ProductGroup extends Component {
 
 const itemStyle = {
     containerStyle: {
-        alignText: "center",
+        // alignText: "center",
         padding: "5px",
         margin: "0 0 25px 0"
     },
     titleStyle: {
-        padding: "0 20px",
         fontWeight: "500"
     },
     idStyle: {
         fontSize: "0.8em",
     },
     pictureStyle: {
+        height: '100%',
+        margin: '0',
         borderRadius: "5px",
-        maxWidth: "300px",
-        margin: "10px 0 10px 0"
+        padding: '0',
+    },
+    pictureDiv: {
+        alignText: "center",
+        height: "300px",
+        width: '300px',
+        overflow: 'hidden',
+        padding: '0',
+        borderRadius: "5px",
     },
     rdStyle: {
         fontSize: "0.8em",

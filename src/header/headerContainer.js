@@ -4,15 +4,22 @@ import { connect } from 'react-redux';
 import SearchBar from '../searchbar/searchBar.js';
 import FabBar from './fabbar.js'
 import '../styles/extraStyles.css';
+import { push } from 'connected-react-router';
 
 
 
 
 class HeaderContainer extends Component {
+
+    goToHome = () => {
+        this.props.dispatch(push('/'))
+    }
+
+
     render() {
         return (
             <div className='fixed-top'>
-                <Header navLink={this.props.navLink} />
+                <Header navLink={this.props.navLink} goToHome={this.goToHome} />
                 <SearchBar navLink={this.props.navLink} searchTerm={this.props.searchTerm} />
                 {this.props.navLink ? <FabBar navLink={this.props.navLink} /> : null}
             </div>

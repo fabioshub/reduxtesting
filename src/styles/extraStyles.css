@@ -5,21 +5,12 @@ button:focus {
     outline:none;
 }
 
-@font-face {
-    font-family: 'PlayFair Display';
-    font-style: normal;
-    font-weight: 500;
-    src:
-        local('PlayFair Display')
-        url(../extra/fonts/PlayfairDisplaySC-Regular.otf) format('otf')
-}
-
 ProductItemPage {
     font-family: 'Playfair Display'
 }
 
 #searchbar::placeholder {
-    color: white
+    color: lightgrey;
 }
 
 #searchbar, #searchbar:focus{

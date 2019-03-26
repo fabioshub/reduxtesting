@@ -49,13 +49,13 @@ class FabBar extends Component {
                     <Col className='text-right'>
 
                         {this.props.navLink ?
-                            <Fab style={styles.fabNavlink} variant={"extended"} onClick={history.goBack}>
+                            <Fab style={styles.fabNavlink} variant={"extended"} onClick={() => { this.props.dispatch(push(`/`)) }}>
                                 <i style={styles.delete} className="fa fa-times" aria-hidden="true"></i>
                                 {this.props.navLink.category}
                             </Fab>
                             : null}
                         {this.props.navLink ? this.props.navLink.productgroup ?
-                            <Fab style={styles.fabNavlink} variant={"extended"} onClick={history.goBack} extended>
+                            <Fab style={styles.fabNavlink} variant={"extended"} onClick={() => { this.props.dispatch(push(`/${this.props.category}`)) }} extended>
                                 <i style={styles.delete} className="fa fa-times" aria-hidden="true"></i>
                                 {this.props.navLink.productgroup}
                             </Fab>
@@ -71,4 +71,11 @@ class FabBar extends Component {
         );
     }
 }
-export default connect()(FabBar);
+
+const mapStateToProps = (state) => {
+    return {
+        category: state.main.navlink.categoryCode
+    }
+}
+
+export default connect(mapStateToProps)(FabBar);

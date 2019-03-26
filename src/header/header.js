@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import '../styles/headerStyle.css';
 import logo from '../extra/images/ptmd-logo2016-def.png';
 import designedWithPassion from '../extra/images/DesignedWithPassion.png';
 import 'font-awesome/css/font-awesome.min.css';
-import history from '../constants/history'
 
 
 const styles = {
     logoStyle: {
-        height: '80px',
+        height: '60px',
         marginTop: '10px'
     },
     DWP: {
-        height: '80px',
+        height: '60px',
     },
     navbar: {
         background: "rgba(0, 0, 0, 0.8)",
@@ -43,7 +42,7 @@ export default class Header extends Component {
             <Container style={styles.navbar} className="text-center ">
                 <Row className='align-items-center'>
                     <Col>
-                        <img style={styles.logoStyle} src={logo} alt=""></img>
+                        <img onClick={this.props.goToHome} style={styles.logoStyle} src={logo} alt=""></img>
                     </Col>
                     <Col>
                         <img style={styles.DWP} src={designedWithPassion} alt=""></img>
