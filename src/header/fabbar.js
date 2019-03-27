@@ -15,12 +15,12 @@ const styles = {
     fabBack: {
         background: 'white',
         color: 'grey',
-        margin: '10px 0 0 0'
+        margin: '10px 10px 0 0'
     },
     fabHome: {
         background: 'white',
         color: 'grey',
-        margin: '10px 0 0 0'
+        margin: '10px 10px 0 0'
     },
     fabNavlink: {
         background: 'white',
@@ -32,7 +32,11 @@ const styles = {
         color: 'darkred',
         fontSize: '15px',
         marginRight: '5px'
-
+    },
+    fav: {
+        fontSize: '24px',
+        color: 'darkred',
+        marginTop: '2px'
     }
 }
 
@@ -40,41 +44,51 @@ class FabBar extends Component {
     render() {
         return (
             <Container style={styles.container}>
-                <Row>
-                    <Col className='text-left'>
-                        <Fab style={styles.fabBack} onClick={history.goBack}>
-                            <i className="fa fa-angle-left" aria-hidden="true" style={styles.plusIconStyle}></i>
-                        </Fab>
-                    </Col>
-                    <Col className='text-right'>
+                {this.props.searchTermData.length === 0 || !this.props.onFocus ?
 
-                        {this.props.navLink ?
-                            <Fab style={styles.fabNavlink} variant={"extended"} onClick={() => { this.props.dispatch(push(`/test`)) }}>
-                                <i style={styles.delete} className="fa fa-times" aria-hidden="true"></i>
-                                {this.props.navLink.category}
-                            </Fab>
-                            : null}
-                        {this.props.navLink ? this.props.navLink.productgroup ?
-                            <Fab style={styles.fabNavlink} variant={"extended"} onClick={() => { this.props.dispatch(push(`/test/${this.props.category}`)) }} extended>
-                                <i style={styles.delete} className="fa fa-times" aria-hidden="true"></i>
-                                {this.props.navLink.productgroup}
-                            </Fab>
-                            : null : null}
-                        <Fab style={styles.fabHome} onClick={() => { this.props.dispatch(push('/test')) }}>
-                            <i className="fa fa-home" aria-hidden="true" style={styles.plusIconStyle}></i>
-                        </Fab>
+                    <Row>
+                        <Col className='text-left' md={4} sm={4} lg={4}>
+                            {this.props.navlink ?
+                                <Fab style={styles.fabBack} onClick={history.goBack}>
+                                    <i className="fa fa-angle-left" aria-hidden="true" style={styles.plusIconStyle}></i>
+                                </Fab>
+                                : null}
+                            {this.props.navlink ?
+                                <Fab style={styles.fabHome} onClick={() => { this.props.dispatch(push('/test')) }}>
+                                    <i className="fa fa-home" aria-hidden="true" style={styles.plusIconStyle}></i>
+                                </Fab>
+                                : null}
+                        </Col>
+                        <Col className='text-right' md={8} sm={8} lg={8}>
+                            {this.props.navlink ?
+                                <Fab style={styles.fabNavlink} variant={"extended"} onClick={() => { this.props.dispatch(push(`/test`)) }}>
+                                    <i style={styles.delete} className="fa fa-times" aria-hidden="true"></i>
+                                    {this.props.navLink.category}
+                                </Fab>
+                                : null}
+                            {this.props.navlink ? this.props.navlink.productgroup ?
+                                <Fab style={styles.fabNavlink} variant={"extended"} onClick={() => { this.props.dispatch(push(`/test/${this.props.navlink.categoryCode}`)) }} extended>
+                                    <i style={styles.delete} className="fa fa-times" aria-hidden="true"></i>
+                                    {this.props.navLink.productgroup}
+                                </Fab>
+                                : null : null}
 
-                    </Col>
-                </Row>
+                            <Fab style={styles.fabHome} >
+                                <i className="fa fa-heart" style={styles.fav}></i>
+                            </Fab>
+                        </Col>
+                    </Row>
+                    : null}
             </Container>
-
         );
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        category: state.main.navlink.categoryCode
+        navlink: state.main.navlink,
+        searchTermData: state.main.searchtermdata,
+        onFocus: state.main.onFocus
     }
 }
 

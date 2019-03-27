@@ -44,10 +44,10 @@ export const navLinkUpdater = (navItem) => {
     }
 }
 
-export const setSearchTerm = (searchTerm) => {
+export const setSearchTermData = (searchTermData) => {
     return {
-        type: "SETSEARCHTERM",
-        payload: searchTerm
+        type: "SETSEARCHTERMDATA",
+        payload: searchTermData
     }
 }
 
@@ -55,5 +55,12 @@ export const setItemPage = (item) => {
     return {
         type: "SETITEMPAGE",
         payload: item
+    }
+}
+
+export const onFocus = (onFocus) => {
+    return {
+        type: "SETONFOCUS",
+        payload: onFocus
     }
 }

@@ -7,7 +7,7 @@ export default class ProductItem extends Component {
         return (
             <Col className="text-center" key={item.sku[0]}>
                 <h3 style={itemStyle.itemTitle}>{item.description}</h3>
-                <img style={itemStyle.image} src={item.imageSmall} alt=''></img>
+                <img style={itemStyle.image} src={item.imageMedium} alt=''></img>
                 <br />
                 <h4 style={itemStyle.priceStyle}>{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(item.price)}</h4>
                 <h5>{item.size}</h5>
@@ -39,6 +39,7 @@ const itemStyle = {
 
     },
     image: {
-        margin: '80px 0'
+        margin: '10px 0',
+        maxWidth: '100%'
     }
 }

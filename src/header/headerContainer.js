@@ -21,7 +21,7 @@ class HeaderContainer extends Component {
             <div className='fixed-top'>
                 <Header navLink={this.props.navLink} goToHome={this.goToHome} />
                 <SearchBar navLink={this.props.navLink} searchTerm={this.props.searchTerm} />
-                {this.props.navLink ? <FabBar navLink={this.props.navLink} /> : null}
+                <FabBar navLink={this.props.navLink} />
             </div>
         );
     }

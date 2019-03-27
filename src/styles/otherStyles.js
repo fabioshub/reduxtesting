@@ -14,5 +14,5 @@ export const basicContainerStyleCategory = {
   "alignItems": "center",
   "textAlign": "center",
   "justifyContent": "center",
-  marginTop: '-50px'
+  marginTop: '-30px'
 }

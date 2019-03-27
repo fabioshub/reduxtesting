@@ -21,6 +21,10 @@ class BrowsePage extends Component {
     this.navLinkUpdater()
   }
 
+  componentDidUpdate() {
+    this.loadInitalData()
+  }
+
   //TEST THIS !!
   returnProductGroupOrCombinedProductGroup = (COMBINEDPRODUCTGROUPSFILE, productGroup) => {
     if (COMBINEDPRODUCTGROUPSFILE.hasOwnProperty(productGroup)) {

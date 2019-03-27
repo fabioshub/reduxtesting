@@ -8,7 +8,7 @@ export default class Category extends Component {
         return this.props.data.map((item, index) => {
             return (
                 <Col onClick={() => { this.callProductGroup(item.code) }} style={itemStyle.containerStyle} key={item.code} sm={4} md={6}>
-                    <span style={itemStyle.titleStyle}>{item.names.NLD}</span>
+                    <span style={itemStyle.titleStyle}>{item.names.DEU}</span>
                     <hr style={itemStyle.hrStyle} />
                     <img src={imageUrlConstructor(item.image)} alt={index} style={itemStyle.pictureStyle}></img>
                 </Col>

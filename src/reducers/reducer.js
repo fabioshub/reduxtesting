@@ -1,5 +1,7 @@
 const initialState = {
     currentpage: 1,
+    onFocus: false,
+    searchtermdata: []
 };
 
 export const mainreducer = (state = initialState, action) => {
@@ -39,15 +41,20 @@ export const mainreducer = (state = initialState, action) => {
                 ...state,
                 navlink: action.payload
             }
-        case 'SETSEARCHTERM':
+        case 'SETSEARCHTERMDATA':
             return {
                 ...state,
-                searchterm: action.payload
+                searchtermdata: action.payload
             }
         case 'SETITEMPAGE':
             return {
                 ...state,
                 item: action.payload
+            }
+        case 'SETONFOCUS':
+            return {
+                ...state,
+                onFocus: action.payload
             }
         default:
             return state;

@@ -9,10 +9,13 @@ import 'font-awesome/css/font-awesome.min.css';
 const styles = {
     logoStyle: {
         height: '60px',
-        marginTop: '10px'
+        marginTop: '20px'
+
     },
     DWP: {
         height: '60px',
+        marginTop: '20px'
+
     },
     navbar: {
         background: "rgba(0, 0, 0, 0.8)",
@@ -39,16 +42,14 @@ const styles = {
 export default class Header extends Component {
     render() {
         return (
-            <Container style={styles.navbar} className="text-center ">
-                <Row className='align-items-center'>
-                    <Col>
-                        <img onClick={this.props.goToHome} style={styles.logoStyle} src={logo} alt=""></img>
-                    </Col>
-                    <Col>
+            <Container style={styles.navbar}>
+                <Row>
+                    <Col sm={3} md={4} />
+                    <Col className='text-center' sm={3} md={4}>
                         <img style={styles.DWP} src={designedWithPassion} alt=""></img>
                     </Col>
-                    <Col>
-                        <i className="fa fa-heart" style={styles.fav}></i>
+                    <Col className='text-right' sm={3} md={4}>
+                        <img onClick={this.props.goToHome} style={styles.logoStyle} src={logo} alt=""></img>
                     </Col>
                 </Row>
                 {/* <Row>
