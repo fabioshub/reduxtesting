@@ -12,7 +12,7 @@ import { push } from 'connected-react-router';
 class HeaderContainer extends Component {
 
     goToHome = () => {
-        this.props.dispatch(push('/'))
+        this.props.dispatch(push('/test'))
     }
 
 
