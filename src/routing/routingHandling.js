@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, HashRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter as Router } from 'connected-react-router';
 import BrowsePage from '../pages/browsepage.js';
 import history from '../constants/history';
