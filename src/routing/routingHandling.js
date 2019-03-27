@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, HashRouter } from 'react-router-dom';
 import { ConnectedRouter as Router } from 'connected-react-router';
 import BrowsePage from '../pages/browsepage.js';
 import history from '../constants/history';
@@ -13,11 +13,10 @@ export class CustomRouter extends Component {
         return (
             <Router history={history} >
                 <Switch>
-                    <Route exact path='/test' component={categoryPage}></Route>
-                    <Route exact path='/test/:category' component={ProductGroupPage}></Route>
-                    <Route exact path='/test/:category/:productgroup/:page' component={BrowsePage}></Route>
-                    <Route exact path='/test/:category/:productgroup/:page/:item' component={ProductItemPage}></Route>
-
+                    <Route exact path='/' component={categoryPage}></Route>
+                    <Route exact path='/:category' component={ProductGroupPage}></Route>
+                    <Route exact path='/:category/:productgroup/:page' component={BrowsePage}></Route>
+                    <Route exact path='/:category/:productgroup/:page/:item' component={ProductItemPage}></Route>
                 </Switch>
             </Router>
         );

@@ -28,7 +28,7 @@ class CategoryContainer extends Component {
     }
 
     dispatchProductGroupCode = (productGroupCode) => {
-        this.props.dispatch(push('/test/' + productGroupCode));
+        this.props.dispatch(push('/' + productGroupCode));
     }
 
     render() {
