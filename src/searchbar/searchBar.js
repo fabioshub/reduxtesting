@@ -40,9 +40,9 @@ class SearchBar extends Component {
                     </InputGroup>
                 </div>
                 {this.props.searchTermData ? this.props.searchTermData.length !== 0 && this.props.onFocus ?
-                    <div style={styles.searchSuggestBox}>
+                    <div style={styles.searchSuggestBox} className='text-left'>
                         <h2 style={styles.searchSuggestBoxTitles}>{this.props.searchTermData[0].category}</h2>
-                        <hr />
+                        <hr align='left' style={styles.searchSuggestBoxHr} />
                         {this.props.searchTermData[0].items.map(item => {
                             return <Button style={styles.suggestItem}>{item}</Button>
                         })}
@@ -106,6 +106,8 @@ const styles = {
         color: 'black',
     },
     searchSuggestBoxHr: {
+        width: '150px',
+        borderColor: 'grey'
 
     },
     searchSuggestBoxTitles: {
