@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ItemContainer from '../browsePageComponents/itemscontainer.js';
-import { itemDataCreator, maxPageSetter, navLinkUpdater } from '../actions/actions.js';
+import { itemDataCreator, maxPageSetter, navLinkUpdater, searched } from '../actions/actions.js';
 import PaginationContainer from '../browsePageComponents/paginationcontainer';
 import { connect } from 'react-redux';
 import { PAGEAMOUNT } from '../constants/otherConstant.js';
@@ -53,9 +53,11 @@ class BrowsePage extends Component {
 
 
   loadInitalData = () => {
+    this.props.dispatch(searched(false))
     const params = { pageNumber: this.props.pageNumber, productGroup: this.returnProductGroupOrCombinedProductGroup(COMBINEDPRODUCTGROUPS, this.props.productGroup), pageAmount: PAGEAMOUNT }
     axios.post(dataEndpoint, { params })
       .then(data => {
+        //UNCONTROLLEDAPIINPUTHANDLING
         this.props.dispatch(itemDataCreator(data.data.docs))
         this.props.dispatch(maxPageSetter(Math.ceil(data.data.numFound / PAGEAMOUNT)))
         if (this.props.pageNumber > this.props.maxPageNumber || typeof this.props.pageNumber !== 'number') {

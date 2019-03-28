@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import Category from './category';
 import { connect } from 'react-redux';
-import axios from 'axios';
-import { categoryDataCreator, navLinkUpdater } from '../actions/actions';
+import { navLinkUpdater, searched } from '../actions/actions';
 import { push } from 'connected-react-router';
 import { withRouter } from 'react-router-dom'
-import { categoriesEndpoint } from '../config/ptc-config';
 import { CATEGORIES } from '../extra/hardcodedFiles/categories.js'
 
 
@@ -21,14 +19,15 @@ class CategoryContainer extends Component {
     }
 
     loadInitalData = () => {
-        axios.get(categoriesEndpoint)
-            .then(data => {
-                this.props.dispatch(categoryDataCreator(data.data));
-            });
+        this.props.dispatch(searched(false));
+        // axios.get(categoriesEndpoint)
+        //     .then(data => {
+        //         this.props.dispatch(categoryDataCreator(data.data));
+        //     });
     }
 
     dispatchProductGroupCode = (productGroupCode) => {
-        this.props.dispatch(push('/test/' + productGroupCode));
+        this.props.dispatch(push('/test/browse/' + productGroupCode));
     }
 
     render() {

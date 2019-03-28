@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { InputGroup, FormControl, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import { setSearchTermData, onFocus } from '../actions/actions';
-import { suggestEndPoint, } from '../config/ptc-config';
+import { setSearchTermData, onFocus, itemDataCreator, maxPageSetter } from '../actions/actions';
+import { suggestEndPoint, suggestItemsColorLocalEndPoint, } from '../config/ptc-config';
 import Axios from 'axios';
+import { PAGEAMOUNT } from '../constants/otherConstant';
 
 class SearchBar extends Component {
 
@@ -15,23 +16,38 @@ class SearchBar extends Component {
         }
     }
 
-    handleEmailChange = (e) => {
-        Axios.get(suggestEndPoint, {
-            params: {
-                query: encodeURIComponent(e.target.value),
-            },
-        })
-            // .then(data => console.log(data.data[0]))
-            .then(data => this.props.dispatch(setSearchTermData(data.data)))
+    dispatchSearch = (searchTerm) => {
+        this.props.dispatch(push(`/test/search/${searchTerm}/1`))
+        const params = { pageNumber: 1, searchTerm: searchTerm, pageAmount: PAGEAMOUNT }
+        Axios.post(suggestItemsColorLocalEndPoint, { params })
+            .then(data => {
+                //UNCONTROLLEDAPIINPUTHANDLING
+                this.props.dispatch(itemDataCreator(data.data.docs))
+                this.props.dispatch(maxPageSetter(Math.ceil(data.data.numFound / PAGEAMOUNT)))
+            })
     }
 
+    handleSuggestChange = (e) => {
+        if (e.length > 0) {
+            Axios.get(suggestEndPoint, {
+                params: {
+                    query: encodeURIComponent(e),
+                },
+            })
+                // .then(data => console.log(data.data[0]))
+
+                //UNCONTROLLEDAPIINPUTHANDLING
+                .then(data => data.data.length > 0 ? this.props.dispatch(setSearchTermData(data.data)) : null)
+        }
+
+    }
 
     render() {
         return (
             <div>
                 <div style={styles.searchContainer}>
                     <InputGroup >
-                        <FormControl id="searchbar" style={styles.inputs} onChange={(e) => { this.handleEmailChange(e) }} onFocus={() => { this.props.dispatch(onFocus(true)) }} onBlur={() => { this.props.dispatch(onFocus(false)) }}
+                        <FormControl id="searchbar" style={styles.inputs} onChange={(e) => { this.handleSuggestChange(e.target.value) }} onFocus={() => { this.props.dispatch(onFocus(true)) }}
                             placeholder="Zoeken..."
                         />
                         <InputGroup.Append>
@@ -44,7 +60,7 @@ class SearchBar extends Component {
                         <h2 style={styles.searchSuggestBoxTitles}>{this.props.searchTermData[0].category}</h2>
                         <hr align='left' style={styles.searchSuggestBoxHr} />
                         {this.props.searchTermData[0].items.map(item => {
-                            return <Button style={styles.suggestItem}>{item}</Button>
+                            return <Button variant='outline-white' key={item} onClick={() => { this.dispatchSearch(item) }} style={styles.suggestItem}>{item}</Button>
                         })}
                     </div>
                     : null : null
@@ -100,29 +116,31 @@ const styles = {
         borderRight: '1px solid white'
     },
     searchSuggestBox: {
-        marginTop: '20px',
+        // marginTop: '20px',
         padding: '20px',
-        background: 'white',
-        color: 'black',
+        background: "rgba(0, 0, 0, 0.8)",
+        color: 'white',
+        boxShadow: '0px 3px 15px rgba(0,0,0,0.2)'
+
     },
     searchSuggestBoxHr: {
         width: '150px',
-        borderColor: 'grey'
+        borderColor: 'white'
 
     },
     searchSuggestBoxTitles: {
-        color: 'black',
+        color: 'white',
     },
     suggestItem: {
         fontsize: '25px',
         margin: '0px 5px',
-        background: 'white',
-        color: 'black',
-        border: '1px solid black'
+        background: 'none',
+        color: 'white',
+        border: '1px solid white'
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
         searchTermData: state.main.searchtermdata,
         onFocus: state.main.onFocus

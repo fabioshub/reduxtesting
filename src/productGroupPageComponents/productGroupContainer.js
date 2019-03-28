@@ -3,7 +3,7 @@ import ProductGroup from './productGroup';
 import { connect } from 'react-redux';
 
 import { withRouter } from 'react-router-dom';
-import { productGroupDataCreator, navLinkUpdater } from '../actions/actions';
+import { productGroupDataCreator, navLinkUpdater, searched } from '../actions/actions';
 import { push } from 'connected-react-router';
 import { PRODUCTGROUPS } from '../extra/hardcodedFiles/productgroups.js'
 import { CATEGORIES } from '../extra/hardcodedFiles/categories';
@@ -21,6 +21,7 @@ class ProductGroupContainer extends Component {
         //         this.props.dispatch(productGroupDataCreator(data.data));
         //     });
         // KEEP THIS IN IN CASE OF API SWITCH FROM LOCAL
+        this.props.dispatch(searched(false))
         PRODUCTGROUPS.forEach(pgItem => {
             if (pgItem.category === this.props.category) {
                 this.props.dispatch(productGroupDataCreator(pgItem.productgroupsitem));

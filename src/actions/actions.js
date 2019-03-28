@@ -64,3 +64,10 @@ export const onFocus = (onFocus) => {
         payload: onFocus
     }
 }
+
+export const searched = (searched) => {
+    return {
+        type: "SETSEARCHED",
+        payload: searched
+    }
+}

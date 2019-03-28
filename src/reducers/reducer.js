@@ -1,7 +1,11 @@
 const initialState = {
     currentpage: 1,
     onFocus: false,
-    searchtermdata: []
+    searchtermdata: [{
+        category: "color",
+        displayCategory: "Kleur",
+        items: ["Blue", "Black", "Brown", "Bronze", "green", "red", "purple"]
+    }]
 };
 
 export const mainreducer = (state = initialState, action) => {
@@ -55,6 +59,11 @@ export const mainreducer = (state = initialState, action) => {
             return {
                 ...state,
                 onFocus: action.payload
+            }
+        case 'SETSEARCHED':
+            return {
+                ...state,
+                searched: action.payload
             }
         default:
             return state;

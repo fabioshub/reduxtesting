@@ -6,6 +6,7 @@ import history from '../constants/history';
 import categoryPage from '../pages/categorypage.js';
 import ProductGroupPage from '../pages/productgrouppage.js';
 import ProductItemPage from '../pages/productItemPage.js';
+import SearchPage from '../pages/searchpage.js'
 
 export class CustomRouter extends Component {
 
@@ -13,10 +14,11 @@ export class CustomRouter extends Component {
         return (
             <Router history={history} >
                 <Switch>
-                    <Route exact path='/test' component={categoryPage}></Route>
-                    <Route exact path='/test/:category' component={ProductGroupPage}></Route>
-                    <Route exact path='/test/:category/:productgroup/:page' component={BrowsePage}></Route>
-                    <Route exact path='/test/:category/:productgroup/:page/:item' component={ProductItemPage}></Route>
+                    <Route exact path='/test/browse' component={categoryPage}></Route>
+                    <Route exact path='/test/browse/:category' component={ProductGroupPage}></Route>
+                    <Route exact path='/test/browse/:category/:productgroup/:page' component={BrowsePage}></Route>
+                    <Route exact path='/test/browse/:category/:productgroup/:page/:item' component={ProductItemPage}></Route>
+                    <Route exact path='/test/search/:searchterm/:page' component={SearchPage}></Route>
                 </Switch>
             </Router>
         );
