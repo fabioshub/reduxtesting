@@ -62,11 +62,6 @@ class SearchBar extends Component {
                         {this.props.searchTermData[0].items.map(item => {
                             return <Button variant='outline-white' key={item} onClick={() => { this.dispatchSearch(item) }} style={styles.suggestItem}>{item}</Button>
                         })}
-                        <h2 style={styles.searchSuggestBoxTitles}>{this.props.searchTermData[0].category}</h2>
-                        <hr align='left' style={styles.searchSuggestBoxHr} />
-                        {this.props.searchTermData[0].items.map(item => {
-                            return <Button variant='outline-white' key={item} onClick={() => { this.dispatchSearch(item) }} style={styles.suggestItem}>{item}</Button>
-                        })}
                     </div>
                     : null : null
                 }
