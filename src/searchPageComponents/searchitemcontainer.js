@@ -16,7 +16,6 @@ class SearchItemContainer extends Component {
         // this.navLinkUpdater()
     }
 
-
     loadInitalData = () => {
         const params = { pageNumber: this.props.pageNumber, searchTerm: this.props.searchTerm, pageAmount: PAGEAMOUNT }
         Axios.post(suggestItemsColorLocalEndPoint, { params })
@@ -45,7 +44,7 @@ class SearchItemContainer extends Component {
     render() {
         return (
             <SearchItems
-                // dispatchProductItemPage={this.dispatchProductItemPage}
+                dispatchProductItemPage={this.dispatchProductItemPage}
                 data={this.props.items}
             />
         );
