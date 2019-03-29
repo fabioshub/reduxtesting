@@ -3,7 +3,7 @@ import { InputGroup, FormControl, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { setSearchTermData, onFocus, itemDataCreator, maxPageSetter } from '../actions/actions';
-import { suggestEndPoint, suggestItemsColorLocalEndPoint, } from '../config/ptc-config';
+import { suggestEndPoint, suggestItemsColorEndPoint, } from '../config/ptc-config';
 import Axios from 'axios';
 import { PAGEAMOUNT } from '../constants/otherConstant';
 
@@ -19,7 +19,7 @@ class SearchBar extends Component {
     dispatchSearch = (searchTerm) => {
         this.props.dispatch(push(`/test/search/${searchTerm}/1`))
         const params = { pageNumber: 1, searchTerm: searchTerm, pageAmount: PAGEAMOUNT }
-        Axios.post(suggestItemsColorLocalEndPoint, { params })
+        Axios.post(suggestItemsColorEndPoint, { params })
             .then(data => {
                 //UNCONTROLLEDAPIINPUTHANDLING
                 this.props.dispatch(itemDataCreator(data.data.docs))
@@ -62,7 +62,11 @@ class SearchBar extends Component {
                         {this.props.searchTermData[0].items.map(item => {
                             return <Button variant='outline-white' key={item} onClick={() => { this.dispatchSearch(item) }} style={styles.suggestItem}>{item}</Button>
                         })}
-
+                        <h2 style={styles.searchSuggestBoxTitles}>{this.props.searchTermData[0].category}</h2>
+                        <hr align='left' style={styles.searchSuggestBoxHr} />
+                        {this.props.searchTermData[0].items.map(item => {
+                            return <Button variant='outline-white' key={item} onClick={() => { this.dispatchSearch(item) }} style={styles.suggestItem}>{item}</Button>
+                        })}
                     </div>
                     : null : null
                 }
