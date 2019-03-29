@@ -4,7 +4,7 @@ import history from '../constants/history';
 import { Container, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import { onFocus } from '../actions/actions';
+import { onFocus, navLinkUpdater, searched } from '../actions/actions';
 
 const styles = {
     container: {
@@ -61,20 +61,20 @@ class FabBar extends Component {
                                 </Fab>
                                 : null}
                             {this.props.navlink || this.props.searched ?
-                                <Fab style={styles.fabHome} onClick={() => { this.props.dispatch(push('/test')) }}>
+                                <Fab style={styles.fabHome} onClick={() => { this.props.dispatch(push('/test')); this.props.dispatch(navLinkUpdater(null)); this.props.dispatch(searched(false)) }}>
                                     <i className="fa fa-home" aria-hidden="true" style={styles.plusIconStyle}></i>
                                 </Fab>
                                 : null}
                         </Col>
                         <Col className='text-right' md={8} sm={8} lg={8}>
                             {this.props.navlink ?
-                                <Fab style={styles.fabNavlink} variant={"extended"} onClick={() => { this.props.dispatch(push(`/test`)) }}>
+                                <Fab variant="extended" style={styles.fabNavlink} onClick={() => { this.props.dispatch(push(`/test`)) }}>
                                     <i style={styles.delete} className="fa fa-times" aria-hidden="true"></i>
                                     {this.props.navLink.category}
                                 </Fab>
                                 : null}
                             {this.props.navlink ? this.props.navlink.productgroup ?
-                                <Fab style={styles.fabNavlink} variant={"extended"} onClick={() => { this.props.dispatch(push(`/test/${this.props.navlink.categoryCode}`)) }} extended>
+                                <Fab variant="extended" style={styles.fabNavlink} onClick={() => { this.props.dispatch(push(`/test/${this.props.navlink.categoryCode}`)) }} >
                                     <i style={styles.delete} className="fa fa-times" aria-hidden="true"></i>
                                     {this.props.navLink.productgroup}
                                 </Fab>
@@ -82,11 +82,6 @@ class FabBar extends Component {
                             <Fab style={styles.fabHome} >
                                 <i className="fa fa-heart" style={styles.fav}></i>
                             </Fab>
-                            {this.props.onFocus ?
-                                <Fab style={styles.closeSuggestBox} variant={"extended"} onClick={() => { this.props.dispatch(onFocus(false)) }} extended>
-                                    <i className="fa fa-times" aria-hidden="true"></i>
-                                </Fab>
-                                : null}
                         </Col>
                     </Row>
                     : null}

@@ -5,6 +5,7 @@ import SearchBar from '../searchbar/searchBar.js';
 import FabBar from './fabbar.js'
 import '../styles/extraStyles.css';
 import { push } from 'connected-react-router';
+import { navLinkUpdater, searched } from '../actions/actions.js';
 
 
 
@@ -12,7 +13,9 @@ import { push } from 'connected-react-router';
 class HeaderContainer extends Component {
 
     goToHome = () => {
-        this.props.dispatch(push('/test'))
+        this.props.dispatch(push('/test'));
+        this.props.dispatch(navLinkUpdater(null));
+        this.props.dispatch(searched(false));
     }
 
 

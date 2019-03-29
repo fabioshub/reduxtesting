@@ -69,7 +69,8 @@ class BrowsePage extends Component {
 
   render() {
     return (
-      <div style={basicContainerStyle}>
+      <div style={basicContainerStyle}
+      >
         <ItemContainer />
         <PaginationContainer
         />

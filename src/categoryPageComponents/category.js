@@ -36,10 +36,9 @@ export default class Category extends Component {
 const itemStyle = {
     containerStyle: {
         padding: "0px",
-        margin: "0 0 25px 0"
+        margin: "0 0 45px 0"
     },
     titleStyle: {
-        // padding: "0 20px",
         fontSize: "15px"
     },
     idStyle: {
@@ -56,11 +55,8 @@ const itemStyle = {
         fontWeight: "500",
         fontSize: "1em",
     },
-    metaStyle: {
-        alignText: "left",
-        marginBottom: "10px"
-    },
     hrStyle: {
-        width: "40%"
+        marginTop: '5px',
+        width: "40%",
     }
 }

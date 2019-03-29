@@ -42,7 +42,7 @@ const itemStyle = {
     containerStyle: {
         // alignText: "center",
         padding: "5px",
-        margin: "0 0 25px 0"
+        margin: "0 0 45px 0"
     },
     titleStyle: {
         fontWeight: "500"
@@ -76,6 +76,7 @@ const itemStyle = {
         marginBottom: "10px"
     },
     hrStyle: {
+        marginTop: '5px',
         width: "40%"
     }
 }
