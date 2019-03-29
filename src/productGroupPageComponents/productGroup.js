@@ -8,7 +8,7 @@ export default class ProductGroup extends Component {
 
         return this.props.data.map((item, index) => {
             return (
-                <Col onClick={() => { this.callProductGroup(item.productgroup) }} style={itemStyle.containerStyle} key={index} sm={4} md={6}>
+                <Col onClick={() => { this.callProductGroup(item.productgroup) }} style={itemStyle.containerStyle} key={index} sm={6} md={6}>
                     <span style={itemStyle.titleStyle}>{item.name}</span>
                     <hr style={itemStyle.hrStyle} />
                     <Container style={itemStyle.pictureDiv} className="justify-content-center">

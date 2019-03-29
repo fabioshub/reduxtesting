@@ -18,7 +18,7 @@ const styles = {
 
     },
     navbar: {
-        background: "rgba(0, 0, 0, 0.8)",
+        background: "rgba(0, 0, 0, 0.9)",
 
     },
     fav: {
@@ -44,11 +44,11 @@ export default class Header extends Component {
         return (
             <Container style={styles.navbar}>
                 <Row>
-                    <Col sm={3} md={4} />
-                    <Col className='text-center' sm={3} md={4}>
+                    <Col sm={4} md={4} />
+                    <Col className='text-center' sm={4} md={4}>
                         <img style={styles.DWP} src={designedWithPassion} alt=""></img>
                     </Col>
-                    <Col className='text-right' sm={3} md={4}>
+                    <Col className='text-right' sm={4} md={4}>
                         <img onClick={this.props.goToHome} style={styles.logoStyle} src={logo} alt=""></img>
                     </Col>
                 </Row>

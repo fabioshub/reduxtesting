@@ -61,20 +61,20 @@ class FabBar extends Component {
                                 </Fab>
                                 : null}
                             {this.props.navlink || this.props.searched ?
-                                <Fab style={styles.fabHome} onClick={() => { this.props.dispatch(push('/test/browse')) }}>
+                                <Fab style={styles.fabHome} onClick={() => { this.props.dispatch(push('/test')) }}>
                                     <i className="fa fa-home" aria-hidden="true" style={styles.plusIconStyle}></i>
                                 </Fab>
                                 : null}
                         </Col>
                         <Col className='text-right' md={8} sm={8} lg={8}>
                             {this.props.navlink ?
-                                <Fab style={styles.fabNavlink} variant={"extended"} onClick={() => { this.props.dispatch(push(`/test/browse`)) }}>
+                                <Fab style={styles.fabNavlink} variant={"extended"} onClick={() => { this.props.dispatch(push(`/test`)) }}>
                                     <i style={styles.delete} className="fa fa-times" aria-hidden="true"></i>
                                     {this.props.navLink.category}
                                 </Fab>
                                 : null}
                             {this.props.navlink ? this.props.navlink.productgroup ?
-                                <Fab style={styles.fabNavlink} variant={"extended"} onClick={() => { this.props.dispatch(push(`/test/browse/${this.props.navlink.categoryCode}`)) }} extended>
+                                <Fab style={styles.fabNavlink} variant={"extended"} onClick={() => { this.props.dispatch(push(`/test/${this.props.navlink.categoryCode}`)) }} extended>
                                     <i style={styles.delete} className="fa fa-times" aria-hidden="true"></i>
                                     {this.props.navLink.productgroup}
                                 </Fab>

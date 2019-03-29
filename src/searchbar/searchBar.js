@@ -62,6 +62,7 @@ class SearchBar extends Component {
                         {this.props.searchTermData[0].items.map(item => {
                             return <Button variant='outline-white' key={item} onClick={() => { this.dispatchSearch(item) }} style={styles.suggestItem}>{item}</Button>
                         })}
+
                     </div>
                     : null : null
                 }
@@ -102,7 +103,7 @@ const styles = {
     },
     searchContainer: {
         padding: '10px 16px',
-        background: 'rgba(0, 0, 0, 0.8)',
+        background: 'rgba(0, 0, 0, 0.9)',
     },
     inputs: {
         outline: 'none',
@@ -118,7 +119,7 @@ const styles = {
     searchSuggestBox: {
         // marginTop: '20px',
         padding: '20px',
-        background: "rgba(0, 0, 0, 0.8)",
+        background: "rgba(0, 0, 0, 0.9)",
         color: 'white',
         boxShadow: '0px 3px 15px rgba(0,0,0,0.2)'
 
@@ -143,7 +144,8 @@ const styles = {
 const mapStateToProps = (state, ownProps) => {
     return {
         searchTermData: state.main.searchtermdata,
-        onFocus: state.main.onFocus
+        onFocus: state.main.onFocus,
+        // url: ownProps
     }
 }
 

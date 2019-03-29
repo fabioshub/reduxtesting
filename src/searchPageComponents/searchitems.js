@@ -7,7 +7,7 @@ export default class SearchItems extends Component {
 
         return this.props.data.map((item, index) => {
             return (
-                <Col onClick={() => { this.props.dispatchProductItemPage(item.sku) }} style={itemStyle.containerStyle} key={index} sm={4} md={6}>
+                <Col onClick={() => { this.props.dispatchProductItemPage(item.sku) }} style={itemStyle.containerStyle} key={index} sm={6} md={6}>
                     <img src={item.imageSmall} alt={index} style={itemStyle.pictureStyle}></img>
                     <br />
                     <span style={itemStyle.titleStyle}>{item.description}</span>
