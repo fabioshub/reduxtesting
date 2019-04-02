@@ -14,7 +14,8 @@ export class CustomRouter extends Component {
         return (
             <Router history={history} >
                 <Switch>
-                    <Route exact path='/test/search/:searchterm/:page' component={SearchPage}></Route>
+                    <Route exact path='/test/search/:sort/:searchterm/:page' component={SearchPage}></Route>
+                    <Route exact path='/test/search/:sort/:searchterm/:page/:item' component={ProductItemPage}></Route>
                     <Route exact path='/test' component={categoryPage}></Route>
                     <Route exact path='/test/:category' component={ProductGroupPage}></Route>
                     <Route exact path='/test/:category/:productgroup/:page' component={BrowsePage}></Route>

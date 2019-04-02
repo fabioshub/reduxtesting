@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 export default class SearchItems extends Component {
 
+
     renderItems() {
 
         return this.props.data.map((item, index) => {

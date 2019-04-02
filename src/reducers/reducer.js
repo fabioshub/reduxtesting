@@ -1,6 +1,7 @@
 const initialState = {
     currentpage: 1,
     onFocus: false,
+    currentSearchTerm: '',
     searchtermdata: [{
         category: "color",
         displayCategory: "Kleur",
@@ -64,6 +65,11 @@ export const mainreducer = (state = initialState, action) => {
             return {
                 ...state,
                 searched: action.payload
+            }
+        case 'CURRENTSEACHTERM':
+            return {
+                ...state,
+                currentSearchTerm: action.payload
             }
         default:
             return state;

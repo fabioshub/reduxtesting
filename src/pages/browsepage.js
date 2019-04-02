@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ItemContainer from '../browsePageComponents/itemscontainer.js';
-import { itemDataCreator, maxPageSetter, navLinkUpdater, searched } from '../actions/actions.js';
+import { itemDataCreator, maxPageSetter, navLinkUpdater, searched, onFocus } from '../actions/actions.js';
 import PaginationContainer from '../browsePageComponents/paginationcontainer';
 import { connect } from 'react-redux';
 import { PAGEAMOUNT } from '../constants/otherConstant.js';
@@ -19,11 +19,14 @@ class BrowsePage extends Component {
   componentDidMount() {
     this.loadInitalData()
     this.navLinkUpdater()
+    this.props.dispatch(onFocus(false));
   }
 
-  componentDidUpdate() {
-    this.loadInitalData()
+  componentWillUnmount() {
+    this.props.dispatch(onFocus(false));
+
   }
+
 
   //TEST THIS !!
   returnProductGroupOrCombinedProductGroup = (COMBINEDPRODUCTGROUPSFILE, productGroup) => {

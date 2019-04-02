@@ -3,7 +3,7 @@ import ProductGroup from './productGroup';
 import { connect } from 'react-redux';
 
 import { withRouter } from 'react-router-dom';
-import { productGroupDataCreator, navLinkUpdater, searched } from '../actions/actions';
+import { productGroupDataCreator, navLinkUpdater, searched, onFocus } from '../actions/actions';
 import { push } from 'connected-react-router';
 import { PRODUCTGROUPS } from '../extra/hardcodedFiles/productgroups.js'
 import { CATEGORIES } from '../extra/hardcodedFiles/categories';
@@ -11,7 +11,8 @@ import { CATEGORIES } from '../extra/hardcodedFiles/categories';
 class ProductGroupContainer extends Component {
 
     componentDidMount() {
-        this.loadInitalData()
+        this.loadInitalData();
+        this.props.dispatch(onFocus(false));
     }
 
     loadInitalData = () => {

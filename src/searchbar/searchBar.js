@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { InputGroup, FormControl, Button, Col, Container, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import { setSearchTermData, onFocus, itemDataCreator, maxPageSetter } from '../actions/actions';
-import { suggestEndPoint, suggestItemsColorEndPoint, suggestLocalEndPoint } from '../config/ptc-config';
+import { setSearchTermData, onFocus, itemDataCreator, maxPageSetter, currentSearch } from '../actions/actions';
+import { suggestEndPoint, suggestItemsProviderEndPoint, suggestLocalEndPoint, suggestItemsProviderLocalEndPoint } from '../config/ptc-config';
 import Axios from 'axios';
 import { PAGEAMOUNT } from '../constants/otherConstant';
 
@@ -21,10 +21,12 @@ class SearchBar extends Component {
         }
     }
 
-    dispatchSearch = (searchTerm) => {
-        this.props.dispatch(push(`/test/search/${searchTerm}/1`))
-        const params = { pageNumber: 1, searchTerm: searchTerm, pageAmount: PAGEAMOUNT }
-        Axios.post(suggestItemsColorEndPoint, { params })
+    dispatchSearch = (sort, searchTerm) => {
+        this.props.dispatch(push(`/test/search/${sort}/${searchTerm}/1`))
+        this.handleSuggestChange(searchTerm);
+        //this is for language control because these are kept in api
+        const params = { pageNumber: 1, sort: sort, searchTerm: searchTerm, pageAmount: PAGEAMOUNT }
+        Axios.post(suggestItemsProviderLocalEndPoint, { params })
             .then(data => {
                 //UNCONTROLLEDAPIINPUTHANDLING
                 this.props.dispatch(itemDataCreator(data.data.docs))
@@ -33,6 +35,8 @@ class SearchBar extends Component {
     }
 
     handleSuggestChange = (e) => {
+        this.textInput.value = e;
+        this.props.dispatch(currentSearch(e))
         if (e.length > 0) {
             Axios.get(suggestLocalEndPoint, {
                 params: {
@@ -62,15 +66,15 @@ class SearchBar extends Component {
 
     render() {
         return (
-            <div>
+            <div id='completeNav'>
                 <div style={styles.searchContainer}>
                     <InputGroup >
-                        <FormControl id="searchbar" ref={(input) => this.textInput = input} style={styles.inputs} onClick={this.toggleSuggestBox} onChange={(e) => { this.handleSuggestChange(e.target.value); this.props.dispatch(onFocus(true)) }}
+                        <FormControl id="searchbar" ref={(textInput) => this.textInput = textInput} style={styles.inputs} onClick={this.toggleSuggestBox} onChange={(e) => { this.handleSuggestChange(this.textInput.value); this.props.dispatch(onFocus(true)); e.preventDefault(); e.stopPropagation(); }}
                             placeholder="Zoeken..."
                         />
-                        <InputGroup.Append>
+                        {/* <InputGroup.Append>
                             <Button style={styles.button} onClick={this.applySearchTerm} > <i className="fa fa-search" aria-hidden="true"></i></Button>
-                        </InputGroup.Append>
+                        </InputGroup.Append> */}
                     </InputGroup>
                 </div>
                 {this.props.searchTermData ? this.props.searchTermData.length !== 0 && this.props.onFocus ?
@@ -81,7 +85,7 @@ class SearchBar extends Component {
                                 <h4 style={styles.searchSuggestBoxTitles}>{this.props.searchTermData[0].category}</h4>
                                 <hr align='left' style={styles.searchSuggestBoxHr} />
                                 {this.props.searchTermData[0].items.map(item => {
-                                    return <Button variant='outline-white' key={item} onClick={() => { this.dispatchSearch(item) }} style={styles.suggestItem}>{item} <span style={{ color: item }}>o</span></Button>
+                                    return <Button variant='outline-white' key={item} onClick={() => { this.dispatchSearch(this.props.searchTermData[0].category, item) }} style={styles.suggestItem}>{item} <span style={{ color: item }}>o</span></Button>
                                 })}
                             </Col>
                             <Col className='text-left' sm={12}>
@@ -89,7 +93,7 @@ class SearchBar extends Component {
                                 {this.props.searchTermData[1] ? <h4 style={styles.searchSuggestBoxTitles}>{this.props.searchTermData[1].category}</h4> : null}
                                 {this.props.searchTermData[1] ? <hr align='left' style={styles.searchSuggestBoxHr} /> : null}
                                 {this.props.searchTermData[1] ? this.props.searchTermData[1].items.map(item => {
-                                    return <Button variant='outline-white' key={item} onClick={() => { this.dispatchSearch(item) }} style={styles.suggestItem}>{item}</Button>
+                                    return <div key={item} ><Button variant='outline-white' onClick={() => { this.dispatchSearch(this.props.searchTermData[1].category, item) }} style={styles.suggestItem}>{item}</Button> <br /></div>
                                 }) : null}
                             </Col>
                             <Col className='text-right' sm={12} style={{}}>
@@ -105,27 +109,6 @@ class SearchBar extends Component {
         );
     }
 }
-
-// const stylesBackup = {
-//     button: {
-//         background: "grey",
-//         color: 'white',
-//         border: "none",
-//         boxShadow: '0 4px 2px -2px rgba(0,0,0,0.4)'
-//     },
-//     searchContainer: {
-//         padding: '10px',
-//         background: 'rgba(0, 0, 0, 0.8)',
-//     },
-//     inputs: {
-//         outline: 'none',
-//         border: 'none',
-//     },
-//     navLink: {
-//         boxShadow: '0 4px 2px -2px rgba(0,0,0,0.4)',
-//         borderRight: '1px solid white'
-//     }
-// }
 
 const styles = {
     button: {
@@ -175,10 +158,10 @@ const styles = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state.main.searchtermdata)
     return {
         searchTermData: state.main.searchtermdata,
         onFocus: state.main.onFocus,
+        currentSearchTerm: state.main.currentSearchTerm
         // url: ownProps
     }
 }

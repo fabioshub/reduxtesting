@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SearchItems from './searchitems.js';
-import { navLinkUpdater, itemDataCreator, maxPageSetter, searched } from '../actions/actions.js';
+import { navLinkUpdater, itemDataCreator, maxPageSetter, searched, onFocus } from '../actions/actions.js';
 import { push } from 'connected-react-router';
 import { withRouter } from 'react-router-dom';
 import Axios from 'axios';
-import { suggestItemsColorLocalEndPoint } from '../config/ptc-config.js';
+import { suggestItemsProviderLocalEndPoint, suggestItemsProviderEndPoint } from '../config/ptc-config.js';
 import { PAGEAMOUNT } from '../constants/otherConstant.js';
 
 
@@ -13,12 +13,15 @@ import { PAGEAMOUNT } from '../constants/otherConstant.js';
 class SearchItemContainer extends Component {
     componentDidMount() {
         this.loadInitalData();
-        // this.navLinkUpdater()
+    }
+
+    componentWillUnmount() {
+        this.props.dispatch(onFocus(false));
     }
 
     loadInitalData = () => {
-        const params = { pageNumber: this.props.pageNumber, searchTerm: this.props.searchTerm, pageAmount: PAGEAMOUNT }
-        Axios.post(suggestItemsColorLocalEndPoint, { params })
+        const params = { pageNumber: this.props.pageNumber, sort: this.props.sort, searchTerm: this.props.searchTerm, pageAmount: PAGEAMOUNT }
+        Axios.post(suggestItemsProviderLocalEndPoint, { params })
             .then(data => {
                 this.props.dispatch(navLinkUpdater(null))
                 this.props.dispatch(searched(true))
@@ -30,7 +33,7 @@ class SearchItemContainer extends Component {
                 // }
             })
             // .then(data => console.log('hey'))
-            .catch(error => console.log('hey'))
+            .catch(error => console.log(error))
     }
 
     dispatchProductItemPage = (sku) => {
@@ -44,6 +47,7 @@ class SearchItemContainer extends Component {
     render() {
         return (
             <SearchItems
+                loadInitalData={this.loadInitalData}
                 dispatchProductItemPage={this.dispatchProductItemPage}
                 data={this.props.items}
             />
@@ -57,7 +61,8 @@ const mapStateToProps = (state, ownProps) => {
         url: ownProps.match.url,
         searchTerm: ownProps.match.params.searchterm,
         pageNumber: ownProps.match.params.page,
-        navLink: state.main.navlink
+        navLink: state.main.navlink,
+        sort: ownProps.match.params.sort
     }
 }
 

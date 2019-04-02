@@ -65,9 +65,16 @@ export const onFocus = (onFocus) => {
     }
 }
 
-export const searched = (searched) => {
+export const searched = (bool) => {
     return {
         type: "SETSEARCHED",
-        payload: searched
+        payload: bool
+    }
+}
+
+export const currentSearch = (term) => {
+    return {
+        type: "CURRENTSEARCHTERM",
+        payload: term
     }
 }
