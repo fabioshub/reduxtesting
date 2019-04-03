@@ -3,7 +3,7 @@ export const CATEGORIES = [
 	{
 		"code": "1",
 		"names": {
-			"NLD": "Keuken",
+			"NLD": "Meubels",
 		},
 		"image": "wysiwyg/wysiwyg1_meubels",
 	},

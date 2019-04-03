@@ -27,7 +27,6 @@ class BrowsePage extends Component {
 
   }
 
-
   //TEST THIS !!
   returnProductGroupOrCombinedProductGroup = (COMBINEDPRODUCTGROUPSFILE, productGroup) => {
     if (COMBINEDPRODUCTGROUPSFILE.hasOwnProperty(productGroup)) {

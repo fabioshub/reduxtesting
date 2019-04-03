@@ -52,7 +52,7 @@ const styles = {
 class FabBar extends Component {
 
     goBack = () => {
-        //history.goBack (without '()' ) does not work properly on onClick event handler
+        this.props.dispatch(onFocus(false));
         history.goBack();
     }
 
@@ -64,7 +64,7 @@ class FabBar extends Component {
                     <Row>
                         <Col className='text-left' md={4} sm={4} lg={4}>
                             {this.props.navlink || this.props.searched ?
-                                <Fab style={styles.fabBack} onClick={this.goBack}>
+                                <Fab style={styles.fabBack} onClick={() => { this.goBack() }}>
                                     <i className="fa fa-angle-left" aria-hidden="true" style={styles.plusIconStyle}></i>
                                 </Fab>
                                 : null}

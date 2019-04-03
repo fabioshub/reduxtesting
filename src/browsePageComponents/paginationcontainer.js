@@ -12,6 +12,12 @@ import { dataEndpoint } from '../config/ptc-config.js';
 
 
 class paginationContainer extends Component {
+
+
+    componentDidUpdate() {
+        this.fetchItemData(this.props.currentpage);
+    }
+
     updateCurrentPage = (newPage) => {
         if (newPage > 0) {
             this.props.dispatch(push(`${newPage}`))

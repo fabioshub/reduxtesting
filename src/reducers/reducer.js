@@ -1,12 +1,19 @@
-const initialState = {
+export const initialState = {
     currentpage: 1,
     onFocus: false,
     currentSearchTerm: '',
-    searchtermdata: [{
-        category: "color",
-        displayCategory: "Kleur",
-        items: ["Blue", "Black", "Brown", "Bronze", "green", "red", "purple"]
-    }]
+    searchtermdata: [
+        {
+            category: "color",
+            displayCategory: "color",
+            items: ["Blue", "Black", "Brown", "Bronze", "green", "red", "purple"]
+        },
+        {
+            category: "collection",
+            displayCategory: "collection",
+            items: ["Selena Blue", "Peony Flower", "Canabas Grey", "Walton Iron", "Simple Metal", "Corby Nickel", "Stockholm Black"]
+        },
+    ]
 };
 
 export const mainreducer = (state = initialState, action) => {
@@ -66,7 +73,7 @@ export const mainreducer = (state = initialState, action) => {
                 ...state,
                 searched: action.payload
             }
-        case 'CURRENTSEACHTERM':
+        case 'CURRENTSEARCHTERM':
             return {
                 ...state,
                 currentSearchTerm: action.payload

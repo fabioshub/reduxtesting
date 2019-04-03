@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { InputGroup, FormControl, Button, Col, Container, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import { setSearchTermData, onFocus, itemDataCreator, maxPageSetter, currentSearch } from '../actions/actions';
+import { setSearchTermData, onFocus, itemDataCreator, maxPageSetter, currentSearch, searched } from '../actions/actions';
 import { suggestEndPoint, suggestItemsProviderEndPoint, suggestLocalEndPoint, suggestItemsProviderLocalEndPoint } from '../config/ptc-config';
 import Axios from 'axios';
 import { PAGEAMOUNT } from '../constants/otherConstant';
+import { initialState } from '../reducers/reducer.js';
 
 class SearchBar extends Component {
 
@@ -26,7 +27,7 @@ class SearchBar extends Component {
         this.handleSuggestChange(searchTerm);
         //this is for language control because these are kept in api
         const params = { pageNumber: 1, sort: sort, searchTerm: searchTerm, pageAmount: PAGEAMOUNT }
-        Axios.post(suggestItemsProviderLocalEndPoint, { params })
+        Axios.post(suggestItemsProviderEndPoint, { params })
             .then(data => {
                 //UNCONTROLLEDAPIINPUTHANDLING
                 this.props.dispatch(itemDataCreator(data.data.docs))
@@ -35,17 +36,20 @@ class SearchBar extends Component {
     }
 
     handleSuggestChange = (e) => {
-        this.textInput.value = e;
         this.props.dispatch(currentSearch(e))
-        if (e.length > 0) {
-            Axios.get(suggestLocalEndPoint, {
+        this.textInput.value = e;
+        if (e.length === 0) {
+            this.props.dispatch(setSearchTermData(initialState.searchtermdata))
+        }
+        else if (e.length > 0) {
+            Axios.get(suggestEndPoint, {
                 params: {
-                    query: encodeURIComponent(e),
+                    query: encodeURIComponent(this.textInput.value),
                 },
             })
                 // .then(data => console.log(data.data))
                 //UNCONTROLLEDAPIINPUTHANDLING
-                .then(data => data.data.length > 0 ? this.props.dispatch(setSearchTermData(data.data)) : null)
+                .then(data => data.data.length > 0 ? this.props.dispatch(setSearchTermData(data.data)) : this.props.dispatch(setSearchTermData(initialState.searchtermdata)))
         }
 
 
@@ -64,6 +68,11 @@ class SearchBar extends Component {
         this.props.dispatch(onFocus(false))
     }
 
+    deleteCurrentSearch = () => {
+        this.textInput.value = '';
+        this.props.dispatch(setSearchTermData(initialState.searchtermdata))
+    }
+
     render() {
         return (
             <div id='completeNav'>
@@ -72,9 +81,11 @@ class SearchBar extends Component {
                         <FormControl id="searchbar" ref={(textInput) => this.textInput = textInput} style={styles.inputs} onClick={this.toggleSuggestBox} onChange={(e) => { this.handleSuggestChange(this.textInput.value); this.props.dispatch(onFocus(true)); e.preventDefault(); e.stopPropagation(); }}
                             placeholder="Zoeken..."
                         />
-                        {/* <InputGroup.Append>
-                            <Button style={styles.button} onClick={this.applySearchTerm} > <i className="fa fa-search" aria-hidden="true"></i></Button>
-                        </InputGroup.Append> */}
+
+                        {this.textInput ? this.textInput.value.length > 0 && this.props.onFocus ?
+                            <InputGroup.Append>
+                                <Button style={styles.button} onClick={() => { this.deleteCurrentSearch() }} > <i className="fa fa-times" aria-hidden="true"></i></Button>
+                            </InputGroup.Append> : null : null}
                     </InputGroup>
                 </div>
                 {this.props.searchTermData ? this.props.searchTermData.length !== 0 && this.props.onFocus ?
@@ -161,8 +172,8 @@ const mapStateToProps = (state, ownProps) => {
     return {
         searchTermData: state.main.searchtermdata,
         onFocus: state.main.onFocus,
-        currentSearchTerm: state.main.currentSearchTerm
-        // url: ownProps
+        currentSearchTerm: state.main.currentSearchTerm,
+        navLink: state.main.navLink
     }
 }
 

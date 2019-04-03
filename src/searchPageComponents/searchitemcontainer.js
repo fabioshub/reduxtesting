@@ -13,6 +13,7 @@ import { PAGEAMOUNT } from '../constants/otherConstant.js';
 class SearchItemContainer extends Component {
     componentDidMount() {
         this.loadInitalData();
+        this.props.dispatch(onFocus(true))
     }
 
     componentWillUnmount() {
@@ -21,7 +22,7 @@ class SearchItemContainer extends Component {
 
     loadInitalData = () => {
         const params = { pageNumber: this.props.pageNumber, sort: this.props.sort, searchTerm: this.props.searchTerm, pageAmount: PAGEAMOUNT }
-        Axios.post(suggestItemsProviderLocalEndPoint, { params })
+        Axios.post(suggestItemsProviderEndPoint, { params })
             .then(data => {
                 this.props.dispatch(navLinkUpdater(null))
                 this.props.dispatch(searched(true))

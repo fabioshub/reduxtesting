@@ -11,6 +11,11 @@ import { suggestItemsProviderLocalEndPoint, suggestItemsProviderEndPoint } from 
 
 
 class paginationSearchContainer extends Component {
+
+    componentDidUpdate() {
+        this.fetchItemData(this.props.currentpage);
+    }
+
     updateCurrentPage = (newPage) => {
         if (newPage > 0) {
             this.props.dispatch(push(`${newPage}`))
@@ -22,7 +27,7 @@ class paginationSearchContainer extends Component {
         //needed to delete current items in redux store
         this.props.dispatch(resetCurrentItemData);
         const params = { pageNumber: page, sort: this.props.sort, searchTerm: this.props.searchTerm, pageAmount: PAGEAMOUNT }
-        axios.post(suggestItemsProviderLocalEndPoint, { params })
+        axios.post(suggestItemsProviderEndPoint, { params })
             .then(data => {
                 //UNCONTROLLEDAPIINPUTHANDLING
                 this.props.dispatch(itemDataCreator(data.data.docs))
