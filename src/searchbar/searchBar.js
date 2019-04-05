@@ -80,7 +80,7 @@ class SearchBar extends Component {
                 <div style={styles.searchContainer}>
                     <InputGroup >
                         <FormControl id="searchbar" ref={(textInput) => this.textInput = textInput} style={styles.inputs} onClick={this.toggleSuggestBox} onChange={(e) => { this.handleSuggestChange(this.textInput.value); this.props.dispatch(onFocus(true)); e.preventDefault(); e.stopPropagation(); }}
-                            placeholder={this.props.t('search') + '...'}
+                            placeholder={this.props.t('search')}
                         />
 
                         {this.textInput ? this.textInput.value.length > 0 && this.props.onFocus ?

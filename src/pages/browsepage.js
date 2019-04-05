@@ -8,7 +8,7 @@ import { push } from 'connected-react-router';
 import { basicContainerStyle } from '../styles/otherStyles.js'
 
 import axios from 'axios';
-import { dataEndpoint } from '../config/ptc-config.js';
+import { dataEndpoint, localendpoint, dataLocalEndpoint } from '../config/ptc-config.js';
 import { COMBINEDPRODUCTGROUPS } from '../extra/hardcodedFiles/combinedProductGroups.js';
 import { PRODUCTGROUPS } from '../extra/hardcodedFiles/productgroups.js';
 import { CATEGORIES } from '../extra/hardcodedFiles/categories.js';
@@ -56,6 +56,7 @@ class BrowsePage extends Component {
 
 
   loadInitalData = () => {
+    console.log(this.returnProductGroupOrCombinedProductGroup(COMBINEDPRODUCTGROUPS, this.props.productGroup))
     this.props.dispatch(searched(false))
     const params = { pageNumber: this.props.pageNumber, productGroup: this.returnProductGroupOrCombinedProductGroup(COMBINEDPRODUCTGROUPS, this.props.productGroup), pageAmount: PAGEAMOUNT }
     axios.post(dataEndpoint, { params })
