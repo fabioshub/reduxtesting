@@ -51,33 +51,69 @@ export const PRODUCTGROUPS = [//catCode
 
 			{
 				productgroup: '11111', //for onclicktoitems
-				name: 'Potten klein',
-				image: pots
+				name: '',
+				image: pots,
+				"names": {
+					"FRA": "Pot S ",
+					"DEU": "Topf S ",
+					"NLD": "Pot S ",
+					"ENU": "Pot S "
+				}
 			},
 			{
 				productgroup: '11112', //for onclicktoitems
 				name: 'Potten medium',
-				image: potm
+				image: potm,
+				"names": {
+					"FRA": "Pot M ",
+					"DEU": "Topf M ",
+					"NLD": "Pot M ",
+					"ENU": "Pot M "
+				}
 			},
 			{
 				productgroup: '11113', //for onclicktoitems
 				name: 'Potten groot',
-				image: potl
+				image: potl,
+				"names": {
+					"FRA": "Pot L ",
+					"DEU": "Topf L ",
+					"NLD": "Pot L ",
+					"ENU": "Pot L "
+				}
 			},
 			{
 				productgroup: '22221', //for onclicktoitems
 				name: 'Vazen klein',
-				image: vaass
+				image: vaass,
+				"names": {
+					"FRA": "Vase S ",
+					"DEU": "Vase S ",
+					"NLD": "Vaas S ",
+					"ENU": "Vase S "
+				}
 			},
 			{
 				productgroup: '22222', //for onclicktoitems
 				name: 'Vazen medium',
-				image: vaasm
+				image: vaasm,
+				"names": {
+					"FRA": "Vase M ",
+					"DEU": "Vase M ",
+					"NLD": "Vaas M ",
+					"ENU": "Vase M "
+				}
 			},
 			{
 				productgroup: '22223', //for onclicktoitems
 				name: 'Vazen groot',
-				image: vaasl
+				image: vaasl,
+				"names": {
+					"FRA": "Vase L ",
+					"DEU": "Vase L ",
+					"NLD": "Vaas L ",
+					"ENU": "Vase L "
+				}
 			},
 		]
 	},
@@ -88,23 +124,47 @@ export const PRODUCTGROUPS = [//catCode
 			{
 				productgroup: '10065', //for onclicktoitems
 				name: 'Plaids',
-				image: plaids
+				image: plaids,
+				"names": {
+					"FRA": "Plaids",
+					"DEU": "Plaids",
+					"NLD": "Plaids",
+					"ENU": "Plaids"
+				}
 			},
 			{
 
 				productgroup: '10010', //for onclicktoitems
 				name: 'Kussenhoezen',
-				image: kussenhoezen
+				image: kussenhoezen,
+				"names": {
+					"FRA": "Housse de Coussin",
+					"DEU": "Kissenhülen",
+					"NLD": "Kussenhoezen",
+					"ENU": "Pillowcovers"
+				}
 			},
 			{
 				productgroup: '10080', //for onclicktoitems
 				name: 'Vloerkleden',
-				image: vloerkleden
+				image: vloerkleden,
+				"names": {
+					"FRA": "Carpette",
+					"DEU": "Teppiche",
+					"NLD": "Vloerkleden",
+					"ENU": "Carpets"
+				}
 			},
 			{
 				productgroup: '20000', //for onclicktoitems
 				name: 'Verf',
-				image: verf
+				image: verf,
+				"names": {
+					"FRA": "Peinture",
+					"DEU": "Farben",
+					"NLD": "Verf",
+					"ENU": "Paint"
+				}
 			},
 		]
 	},
@@ -115,7 +175,13 @@ export const PRODUCTGROUPS = [//catCode
 			{
 				productgroup: '18040', //for onclicktoitems
 				name: 'Kunstplanten',
-				image: kunstplanten
+				image: kunstplanten,
+				"names": {
+					"FRA": "Artificial Flower & Plants",
+					"DEU": "Artificial Flower & Plants",
+					"NLD": "Kunstplanten",
+					"ENU": "Artificial Flower & Plants"
+				},
 			},
 		]
 	},
@@ -126,23 +192,47 @@ export const PRODUCTGROUPS = [//catCode
 			{
 				productgroup: '16015', //for onclicktoitems
 				name: 'Bestek',
-				image: bestek
+				image: bestek,
+				"names": {
+					"FRA": "Couvert",
+					"DEU": "Besteck",
+					"NLD": "Bestek",
+					"ENU": "Cutlery"
+				}
 			},
 			{
 
 				productgroup: '16010', //for onclicktoitems
 				name: 'Servies',
-				image: servies
+				image: servies,
+				"names": {
+					"FRA": "Service de table",
+					"DEU": "Tafelgeschirr",
+					"NLD": "Servies",
+					"ENU": "Crockery"
+				}
 			},
 			{
 				productgroup: '16020', //for onclicktoitems
 				name: 'Glaswerk',
-				image: glaswerk
+				image: glaswerk,
+				"names": {
+					"FRA": "Verrerie",
+					"DEU": "Glaswaren",
+					"NLD": "Glaswerk",
+					"ENU": "Glassware"
+				}
 			},
 			{
 				productgroup: '04010', //for onclicktoitems
 				name: 'Dienbladen',
-				image: dienbladen
+				image: dienbladen,
+				"names": {
+					"FRA": "Plateaux",
+					"DEU": "Tabletts",
+					"NLD": "Dienbladen",
+					"ENU": "Trays"
+				}
 			},
 		]
 	},
@@ -153,23 +243,47 @@ export const PRODUCTGROUPS = [//catCode
 			{
 				productgroup: '12040', //for onclicktoitems
 				name: 'Kasten',
-				image: kasten
+				image: kasten,
+				"names": {
+					"FRA": "Armoires",
+					"DEU": "Schränke",
+					"NLD": "Kasten",
+					"ENU": "Cabinets"
+				}
 			},
 			{
 
 				productgroup: '12010', //for onclicktoitems
 				name: 'Tafels',
-				image: tafels
+				image: tafels,
+				"names": {
+					"FRA": "Tables",
+					"DEU": "Tische",
+					"NLD": "Tafels",
+					"ENU": "Tables"
+				}
 			},
 			{
 				productgroup: '12020', //for onclicktoitems
 				name: 'Stoelen',
-				image: stoelen
+				image: stoelen,
+				"names": {
+					"FRA": "Chaises",
+					"DEU": "Stühle",
+					"NLD": "Stoelen",
+					"ENU": "Chairs"
+				}
 			},
 			{
 				productgroup: '12015', //for onclicktoitems
 				name: 'Krukjes',
-				image: krukjes
+				image: krukjes,
+				"names": {
+					"FRA": "Tabourets",
+					"DEU": "Hocker",
+					"NLD": "Krukjes",
+					"ENU": "Stools"
+				}
 			},
 		]
 	},
@@ -180,33 +294,69 @@ export const PRODUCTGROUPS = [//catCode
 			{
 				productgroup: '08100', //for onclicktoitems
 				name: 'Deco wandpaneel',
-				image: decowandpaneel
+				image: decowandpaneel,
+				"names": {
+					"FRA": "Panneau mural",
+					"DEU": "Deko Wandplatte",
+					"NLD": "Deco wandpaneel",
+					"ENU": "Wall panel"
+				}
 			},
 			{
 
 				productgroup: '05010', //for onclicktoitems
 				name: 'Wandhaken',
-				image: wandhaken
+				image: wandhaken,
+				"names": {
+					"FRA": "Crochets mureaux",
+					"DEU": "Mauerhaken",
+					"NLD": "Wandhaken",
+					"ENU": "Wallhooks"
+				}
 			},
 			{
 				productgroup: '08035', //for onclicktoitems
 				name: 'Klokken',
-				image: klokken
+				image: klokken,
+				"names": {
+					"FRA": "Cloches",
+					"DEU": "Uhren",
+					"NLD": "Klokken",
+					"ENU": "Clocks"
+				}
 			},
 			{
 				productgroup: '17010', //for onclicktoitems
 				name: 'Spiegel',
-				image: spiegel
+				image: spiegel,
+				"names": {
+					"FRA": "Miroirs",
+					"DEU": "Spiegel",
+					"NLD": "Spiegels",
+					"ENU": "Mirrors"
+				}
 			},
 			{
 				productgroup: '08105', //for onclicktoitems
 				name: 'Schilderijen',
-				image: schilderijen
+				image: schilderijen,
+				"names": {
+					"FRA": "Tableaux",
+					"DEU": "Bilder",
+					"NLD": "Schilderijen",
+					"ENU": "Paintings"
+				}
 			},
 			{
 				productgroup: '20000', //for onclicktoitems
 				name: 'Verf',
-				image: verf
+				image: verf,
+				"names": {
+					"FRA": "Peinture",
+					"DEU": "Farben",
+					"NLD": "Verf",
+					"ENU": "Paint"
+				}
 			},
 		]
 	},
@@ -217,28 +367,58 @@ export const PRODUCTGROUPS = [//catCode
 			{
 				productgroup: '21011', //for onclicktoitems
 				name: 'Hanglampen',
-				image: hanglampen
+				image: hanglampen,
+				"names": {
+					"FRA": "Lustres",
+					"DEU": "Hängelampen",
+					"NLD": "Hanglampen",
+					"ENU": "Hanging lamp"
+				}
 			},
 			{
 
 				productgroup: '21014', //for onclicktoitems
 				name: 'Wandlampen',
-				image: wandlampen
+				image: wandlampen,
+				"names": {
+					"FRA": "Appliques murales",
+					"DEU": "Wandlampen",
+					"NLD": "Wandlampen",
+					"ENU": "Wall lamps"
+				}
 			},
 			{
 				productgroup: '21012', //for onclicktoitems
 				name: 'Staande lampen',
-				image: staandelampen
+				image: staandelampen,
+				"names": {
+					"FRA": "Lampadaires",
+					"DEU": "Stehlampen",
+					"NLD": "Staande lampen",
+					"ENU": "Floor lamps"
+				}
 			},
 			{
 				productgroup: '21013', //for onclicktoitems
 				name: 'Tafellampen',
-				image: tafellampen
+				image: tafellampen,
+				"names": {
+					"FRA": "Lampes de table",
+					"DEU": "Tischlampen",
+					"NLD": "Tafellampen",
+					"ENU": "Table lamp"
+				}
 			},
 			{
 				productgroup: '21020', //for onclicktoitems
 				name: 'Lampenkappen',
-				image: lampenkappen
+				image: lampenkappen,
+				"names": {
+					"FRA": "Abats jours",
+					"DEU": "Lampenschirme",
+					"NLD": "Lampenkappen",
+					"ENU": "Lampshades"
+				}
 			},
 		]
 	},
@@ -249,49 +429,103 @@ export const PRODUCTGROUPS = [//catCode
 			{
 				productgroup: '09080', //for onclicktoitems
 				name: 'Windlichten',
-				image: Windlichten
+				image: Windlichten,
+				"names": {
+					"FRA": "Bougeoirs en verre",
+					"DEU": "Windlichter",
+					"NLD": "Windlichten",
+					"ENU": "Stormlights"
+				}
 			},
 			{
 
 				productgroup: '13010', //for onclicktoitems
 				name: 'Standbeelden',
-				image: Standbeelden
+				image: Standbeelden,
+				"names": {
+					"FRA": "Statues",
+					"DEU": "Statuen",
+					"NLD": "Standbeelden",
+					"ENU": "Statues"
+				}
 			},
 			{
 				productgroup: '02020', //for onclicktoitems
 				name: 'Manden',
-				image: Manden
+				image: Manden,
+				"names": {
+					"FRA": "Paniers",
+					"DEU": "Körbe",
+					"NLD": "Manden",
+					"ENU": "Baskets"
+				}
 			},
 			{
 				productgroup: '14010', //for onclicktoitems
 				name: 'Fotolijsten',
-				image: Fotolijsten
+				image: Fotolijsten,
+				"names": {
+					"FRA": "Cadres photos",
+					"DEU": "Bilderrahmen",
+					"NLD": "Fotolijsten",
+					"ENU": "Photo frames"
+				}
 			},
 			{
 				productgroup: '01115', //for onclicktoitems
 				name: 'Stolp',
-				image: Stolp
+				image: Stolp,
+				"names": {
+					"FRA": "Cloche de Verre",
+					"DEU": "Glasglocke",
+					"NLD": "Stolp",
+					"ENU": "Bell Jar"
+				}
 			},
 			{
 
-				productgroup: '041110', //for onclicktoitems
+				productgroup: '04110', //for onclicktoitems
 				name: 'Etagere',
-				image: Etagere
+				image: Etagere,
+				"names": {
+					"FRA": "Étagère",
+					"DEU": "Etagère",
+					"NLD": "Etagère",
+					"ENU": "Whatnot"
+				}
 			},
 			{
 				productgroup: '16030', //for onclicktoitems
 				name: 'Wijnkoelers',
-				image: Wijnkoelers
+				image: Wijnkoelers,
+				"names": {
+					"FRA": "refroidisseurs à vin",
+					"DEU": "Weinkühler",
+					"NLD": "wijnkoelers",
+					"ENU": "Wine coolers"
+				}
 			},
 			{
 				productgroup: '08030', //for onclicktoitems
 				name: 'Opbergen',
-				image: Opbergen
+				image: Opbergen,
+				"names": {
+					"FRA": "Ranger",
+					"DEU": "Bergen",
+					"NLD": "Opbergen",
+					"ENU": "Storage"
+				}
 			},
 			{
 				productgroup: '08150', //for onclicktoitems
 				name: 'Decoratie hanger',
-				image: Decoratiehanger
+				image: Decoratiehanger,
+				"names": {
+					"FRA": "Chaînette Décoration",
+					"DEU": "Dékoration Hänger",
+					"NLD": "Decoratie hanger",
+					"ENU": "Hanging Decoration"
+				}
 			},
 		]
 	},

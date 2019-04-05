@@ -4,6 +4,10 @@ export const CATEGORIES = [
 		"code": "1",
 		"names": {
 			"NLD": "Meubels",
+			"DEU": "Möbel",
+			"FRA": "Meubles",
+			"ENU": "Furniture",
+
 		},
 		"image": "wysiwyg/wysiwyg1_meubels",
 	},

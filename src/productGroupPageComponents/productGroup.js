@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
+import { translate } from '../translationComponents/translationHelper';
+
 
 export default class ProductGroup extends Component {
 
@@ -9,7 +11,7 @@ export default class ProductGroup extends Component {
         return this.props.data.map((item, index) => {
             return (
                 <Col onClick={() => { this.callProductGroup(item.productgroup) }} style={itemStyle.containerStyle} key={index} sm={6} md={6}>
-                    <span style={itemStyle.titleStyle}>{item.name}</span>
+                    <span style={itemStyle.titleStyle}>{translate(item.names)}</span>
                     <hr style={itemStyle.hrStyle} />
                     <Container style={itemStyle.pictureDiv} className="justify-content-center">
                         <img src={item.image} alt={index} style={itemStyle.pictureStyle}></img>

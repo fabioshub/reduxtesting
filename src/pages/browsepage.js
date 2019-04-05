@@ -12,6 +12,7 @@ import { dataEndpoint } from '../config/ptc-config.js';
 import { COMBINEDPRODUCTGROUPS } from '../extra/hardcodedFiles/combinedProductGroups.js';
 import { PRODUCTGROUPS } from '../extra/hardcodedFiles/productgroups.js';
 import { CATEGORIES } from '../extra/hardcodedFiles/categories.js';
+import { translate } from '../translationComponents/translationHelper.js';
 
 
 class BrowsePage extends Component {
@@ -44,7 +45,7 @@ class BrowsePage extends Component {
           if (productGroup.category === categorie.code) {
             productGroup.productgroupsitem.forEach(productgroupitem => {
               if (productgroupitem.productgroup === this.props.productGroup) {
-                this.props.dispatch(navLinkUpdater({ category: categorie.names.NLD, categoryCode: parseInt(categorie.code, 10), productgroup: productgroupitem.name, productGroupCode: parseInt(productgroupitem.productgroup) }));
+                this.props.dispatch(navLinkUpdater({ category: translate(categorie.names), categoryCode: parseInt(categorie.code, 10), productgroup: translate(productgroupitem.names), productGroupCode: parseInt(productgroupitem.productgroup) }));
               }
             })
           }

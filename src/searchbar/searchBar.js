@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { InputGroup, FormControl, Button, Col, Container, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import { setSearchTermData, onFocus, itemDataCreator, maxPageSetter, currentSearch, searched } from '../actions/actions';
+import { setSearchTermData, onFocus, itemDataCreator, maxPageSetter, currentSearch } from '../actions/actions';
 import { suggestEndPoint, suggestItemsProviderEndPoint, suggestLocalEndPoint, suggestItemsProviderLocalEndPoint } from '../config/ptc-config';
 import Axios from 'axios';
 import { PAGEAMOUNT } from '../constants/otherConstant';
 import { initialState } from '../reducers/reducer.js';
+import { withTranslation } from 'react-i18next';
 
 class SearchBar extends Component {
 
@@ -79,7 +80,7 @@ class SearchBar extends Component {
                 <div style={styles.searchContainer}>
                     <InputGroup >
                         <FormControl id="searchbar" ref={(textInput) => this.textInput = textInput} style={styles.inputs} onClick={this.toggleSuggestBox} onChange={(e) => { this.handleSuggestChange(this.textInput.value); this.props.dispatch(onFocus(true)); e.preventDefault(); e.stopPropagation(); }}
-                            placeholder="Zoeken..."
+                            placeholder={this.props.t('search') + '...'}
                         />
 
                         {this.textInput ? this.textInput.value.length > 0 && this.props.onFocus ?
@@ -178,4 +179,4 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 
-export default connect(mapStateToProps)(SearchBar)
+export default connect(mapStateToProps)(withTranslation()(SearchBar))

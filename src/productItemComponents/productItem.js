@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
-import { onFocus } from '../actions/actions';
 
 export default class ProductItem extends Component {
 

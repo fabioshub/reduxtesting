@@ -7,6 +7,7 @@ import { productGroupDataCreator, navLinkUpdater, searched, onFocus } from '../a
 import { push } from 'connected-react-router';
 import { PRODUCTGROUPS } from '../extra/hardcodedFiles/productgroups.js'
 import { CATEGORIES } from '../extra/hardcodedFiles/categories';
+import { translate } from '../translationComponents/translationHelper';
 
 class ProductGroupContainer extends Component {
 
@@ -30,7 +31,7 @@ class ProductGroupContainer extends Component {
         });
         CATEGORIES.forEach(categorie => {
             if (categorie.code === this.props.category) {
-                this.props.dispatch(navLinkUpdater({ category: categorie.names.NLD, categoryCode: categorie.code }));
+                this.props.dispatch(navLinkUpdater({ category: translate(categorie.names), categoryCode: categorie.code }));
             }
         })
     };

@@ -8,6 +8,7 @@ import Axios from 'axios';
 import { setItemPage, navLinkUpdater } from '../actions/actions.js';
 import { CATEGORIES } from '../extra/hardcodedFiles/categories.js';
 import { PRODUCTGROUPS } from '../extra/hardcodedFiles/productgroups.js';
+import { translate } from '../translationComponents/translationHelper.js';
 
 class ProductItemContainer extends Component {
 
@@ -24,7 +25,7 @@ class ProductItemContainer extends Component {
                     if (productGroup.category === categorie.code) {
                         productGroup.productgroupsitem.forEach(productgroupitem => {
                             if (parseInt(productgroupitem.productgroup, 10) === parseInt(this.props.productGroup, 10)) {
-                                this.props.dispatch(navLinkUpdater({ category: categorie.names.NLD, categoryCode: parseInt(categorie.code, 10), productgroup: productgroupitem.name, productGroupCode: parseInt(productgroupitem.productgroup) }));
+                                this.props.dispatch(navLinkUpdater({ category: translate(categorie.names), categoryCode: parseInt(categorie.code, 10), productgroup: productgroupitem.name, productGroupCode: parseInt(productgroupitem.productgroup) }));
                             }
                         })
                     }

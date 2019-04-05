@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { translateItems } from '../translationComponents/translationHelper';
+import { withTranslation } from 'react-i18next';
 
-export default class SearchItems extends Component {
+class SearchItems extends Component {
 
 
     renderItems() {
@@ -11,7 +13,7 @@ export default class SearchItems extends Component {
                 <Col onClick={() => { this.props.dispatchProductItemPage(item.sku) }} style={itemStyle.containerStyle} key={index} sm={6} md={6}>
                     <img src={item.imageSmall} alt={index} style={itemStyle.pictureStyle}></img>
                     <br />
-                    <span style={itemStyle.titleStyle}>{item.description}</span>
+                    <span style={itemStyle.titleStyle}>{translateItems(item)}</span>
                     <div style={itemStyle.metaStyle} className="text-left">
                         <br />
                         <span style={itemStyle.idStyle}>{item.sku}</span>
@@ -34,7 +36,7 @@ export default class SearchItems extends Component {
                     {this.renderItems()}
                 </Row>
             </Container>
-        ) : (<span>Loading search...</span>);
+        ) : (<span>{this.props.t('loading')}</span>);
     }
 }
 
@@ -70,3 +72,5 @@ const itemStyle = {
         width: "40%"
     }
 }
+
+export default withTranslation()(SearchItems)
