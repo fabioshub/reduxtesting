@@ -72,12 +72,12 @@ class FabBar extends Component {
 
         console.log(convertWishToOrder(this.props.wishlist, ZUILID))
         const wishlist = this.props.wishlist
-        Axios.post(saveOrderLocalEndpoint, convertWishToOrder(wishlist, ZUILID)).then(res => {
+        Axios.post(saveOrderEndpoint, convertWishToOrder(wishlist, ZUILID)).then(res => {
             console.log(res)
         })
         this.props.dispatch(push('/test'))
         this.props.dispatch(removeWishlist())
-        window.location.reload()
+        // window.location.reload()
     }
 
 

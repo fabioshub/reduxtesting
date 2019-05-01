@@ -9,6 +9,7 @@ export const convertWishToOrder = (wishlist, zuilid) => {
 
 
     today = mm + '/' + dd + '/' + yyyy + " @ " + time;
+    console.log(wishlist)
 
     return {
         "ZUIL_ID": zuilid.toString(),
@@ -16,6 +17,7 @@ export const convertWishToOrder = (wishlist, zuilid) => {
 
             let result = {
                 "item": `${element.item.sku[0]}`,
+                "image": `${element.item.imageSmall}`,
                 "amount": `${element.amount}`
             }
             return result;

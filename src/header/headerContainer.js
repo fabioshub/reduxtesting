@@ -16,7 +16,7 @@ import { createWishtListLocalEndpoint, createWishtListEndpoint } from '../config
 class HeaderContainer extends Component {
 
     componentDidMount() {
-        Axios.get(`${createWishtListLocalEndpoint}/${ZUILID}`)
+        Axios.get(`${createWishtListEndpoint}/${ZUILID}`)
             .then(data => {
                 this.props.dispatch(overrideWistlist(JSON.parse(data.data)))
             })

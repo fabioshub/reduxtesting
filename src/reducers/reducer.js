@@ -1,6 +1,6 @@
 import Axios from "axios";
 import { ZUILID } from "../constants/otherConstant";
-import { createWishtListItemLocalEndpoint } from "../config/ptc-config";
+import { createWishtListItemLocalEndpoint, createWishtListItemEndpoint } from "../config/ptc-config";
 
 
 export const initialState = {
@@ -102,7 +102,7 @@ export const mainreducer = (state = initialState, action) => {
                         wishlist: [...state.wishlist]
                     }
                     const params = { wishlist_item: JSON.stringify(wishlistItem.wishlist), wishlist_id: ZUILID }
-                    Axios.post(createWishtListItemLocalEndpoint, params).then(res => { console.log(res) }).catch((error) => console.log(error))
+                    Axios.post(createWishtListItemEndpoint, params).then(res => { console.log(res) }).catch((error) => console.log(error))
                     return wishlistItem;
                 }
             }
@@ -111,7 +111,7 @@ export const mainreducer = (state = initialState, action) => {
                 wishlist: [...state.wishlist, action.payload]
             }
             const params = { wishlist_item: JSON.stringify(wishlistItem.wishlist), wishlist_id: ZUILID }
-            Axios.post(createWishtListItemLocalEndpoint, params).then(res => { console.log(res) }).catch((error) => console.log(error))
+            Axios.post(createWishtListItemEndpoint, params).then(res => { console.log(res) }).catch((error) => console.log(error))
             return wishlistItem;
         case 'REMOVEFROMWISHLIST':
             console.log('remove from wishlist')
@@ -120,7 +120,7 @@ export const mainreducer = (state = initialState, action) => {
                 wishlist: state.wishlist.filter(item => item !== action.payload)
             }
             const paramsRemoved = { wishlist_item: JSON.stringify(wishlistItemRemoved.wishlist), wishlist_id: ZUILID }
-            Axios.post(createWishtListItemLocalEndpoint, paramsRemoved).then(res => { console.log(res) }).catch((error) => console.log(error))
+            Axios.post(createWishtListItemEndpoint, paramsRemoved).then(res => { console.log(res) }).catch((error) => console.log(error))
             return wishlistItemRemoved;
         case 'OVERRIDEWISHLIST':
             console.log('override wishlist')
@@ -131,7 +131,7 @@ export const mainreducer = (state = initialState, action) => {
         case 'REMOVEWISHLIST':
             console.log('remove wishlist')
             const removeWishlist = { wishlist_item: JSON.stringify([]), wishlist_id: ZUILID }
-            Axios.post(createWishtListItemLocalEndpoint, removeWishlist).then(res => { console.log(res) }).catch((error) => console.log(error))
+            Axios.post(createWishtListItemEndpoint, removeWishlist).then(res => { console.log(res) }).catch((error) => console.log(error))
             return {
                 ...state,
                 wishlist: []
