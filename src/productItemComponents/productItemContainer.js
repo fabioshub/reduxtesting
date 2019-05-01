@@ -5,10 +5,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { itemEndpoint } from '../config/ptc-config.js';
 import Axios from 'axios';
-import { setItemPage, navLinkUpdater } from '../actions/actions.js';
+import { setItemPage, navLinkUpdater, snackbarToggler, addItemToWishlist } from '../actions/actions.js';
 import { CATEGORIES } from '../extra/hardcodedFiles/categories.js';
 import { PRODUCTGROUPS } from '../extra/hardcodedFiles/productgroups.js';
 import { translate } from '../translationComponents/translationHelper.js';
+import { addItemToLocalStorageWishlist } from '../actions/LocalStorage.js';
+import { ZUILID } from '../constants/otherConstant.js';
 
 class ProductItemContainer extends Component {
 
@@ -25,7 +27,7 @@ class ProductItemContainer extends Component {
                     if (productGroup.category === categorie.code) {
                         productGroup.productgroupsitem.forEach(productgroupitem => {
                             if (parseInt(productgroupitem.productgroup, 10) === parseInt(this.props.productGroup, 10)) {
-                                this.props.dispatch(navLinkUpdater({ category: translate(categorie.names), categoryCode: parseInt(categorie.code, 10), productgroup: productgroupitem.name, productGroupCode: parseInt(productgroupitem.productgroup) }));
+                                this.props.dispatch(navLinkUpdater({ category: translate(categorie.names), categoryCode: parseInt(categorie.code, 10), productgroup: translate(productgroupitem.names), productGroupCode: parseInt(productgroupitem.productgroup) }));
                             }
                         })
                     }
@@ -43,11 +45,26 @@ class ProductItemContainer extends Component {
             });
     }
 
+
+    addToWishList = (wishlistItem) => {
+        this.props.dispatch(snackbarToggler(true))
+        // addItemToLocalStorageWishlist('wishlist', wishlistItem)
+        this.props.dispatch(addItemToWishlist(wishlistItem))
+
+    }
+
+    snackbarClose = () => {
+        this.props.dispatch(snackbarToggler(false))
+    }
+
     render() {
         return (
             <ProductItem
                 itemCode={this.props.itemCode}
                 currentItemsOnPage={this.props.currentItemsOnPage}
+                addToWishList={this.addToWishList}
+                snackbarOpened={this.props.snackbarOpened}
+                snackbarClose={this.snackbarClose}
             />
         );
     }
@@ -59,6 +76,8 @@ const mapStateToProps = (state, ownProps) => {
         currentItemsOnPage: state.main.item,
         category: parseInt(ownProps.match.params.category, 10),
         productGroup: parseInt(ownProps.match.params.productgroup, 10),
+        snackbarOpened: state.main.snackbarOpened,
+        wishlist: state.main.wishlist
     }
 }
 

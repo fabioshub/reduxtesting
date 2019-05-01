@@ -78,3 +78,61 @@ export const currentSearch = (term) => {
         payload: term
     }
 }
+
+export const snackbarToggler = (bool) => {
+    return {
+        type: 'SNACKBARTOGGLER',
+        payload: bool
+    }
+}
+
+export const snackbarTogglerP = (bool) => {
+    return {
+        type: 'SNACKBARTOGGLERP',
+        payload: bool
+    }
+}
+
+
+export const addItemToWishlist = (item) => {
+    return {
+        type: 'ADDTOWISHLIST',
+        payload: item
+    }
+}
+
+
+export const overrideWistlist = (item) => {
+    return {
+        type: 'OVERRIDEWISHLIST',
+        payload: item
+    }
+}
+
+export const removeFromWishlist = (item) => {
+    return {
+        type: 'REMOVEFROMWISHLIST',
+        payload: item
+    }
+}
+
+export const removeWishlist = () => {
+    return {
+        type: 'REMOVEWISHLIST'
+    }
+}
+
+
+export const onWishlist = (bool) => {
+    return {
+        type: 'ONWISHLIST',
+        payload: bool
+    }
+}
+
+
+export const resetState = () => {
+    return {
+        type: 'RESETSTATE',
+    }
+}

@@ -8,14 +8,13 @@ import { PAGEAMOUNT } from '../constants/otherConstant.js';
 import { COMBINEDPRODUCTGROUPS } from '../extra/hardcodedFiles/combinedProductGroups.js';
 
 import axios from 'axios';
-import { dataEndpoint } from '../config/ptc-config.js';
+import { dataEndpoint, dataLocalEndpoint } from '../config/ptc-config.js';
 
 
 class paginationContainer extends Component {
 
-
     componentDidUpdate() {
-        this.fetchItemData(this.props.currentpage);
+        this.fetchItemData();
     }
 
     updateCurrentPage = (newPage) => {
@@ -25,11 +24,21 @@ class paginationContainer extends Component {
         }
     }
 
-    fetchItemData(page) {
+    returnProductGroupOrCombinedProductGroup = (COMBINEDPRODUCTGROUPSFILE, productGroup) => {
+        if (COMBINEDPRODUCTGROUPSFILE.hasOwnProperty(productGroup)) {
+            return COMBINEDPRODUCTGROUPSFILE[productGroup];
+        }
+        else {
+            return productGroup;
+        }
+    }
+
+    fetchItemData() {
         //needed to delete current items in redux store
         this.props.dispatch(resetCurrentItemData);
         if (COMBINEDPRODUCTGROUPS.hasOwnProperty(this.props.productGroup)) {
-            const params = { pageNumber: page, productGroup: COMBINEDPRODUCTGROUPS[this.props.productGroup], pageAmount: PAGEAMOUNT }
+            const params = { pageNumber: this.props.currentpage, productGroup: this.returnProductGroupOrCombinedProductGroup(COMBINEDPRODUCTGROUPS, this.props.productGroup), pageAmount: PAGEAMOUNT }
+            console.log(params)
             axios.post(dataEndpoint, { params })
                 .then(data => {
                     //UNCONTROLLEDAPIINPUTHANDLING
@@ -37,7 +46,7 @@ class paginationContainer extends Component {
                 });
         }
         else {
-            const params = { pageNumber: page, productGroup: this.props.productGroup, pageAmount: PAGEAMOUNT }
+            const params = { pageNumber: this.props.currentpage, productGroup: this.returnProductGroupOrCombinedProductGroup(COMBINEDPRODUCTGROUPS, this.props.productGroup), pageAmount: PAGEAMOUNT }
             axios.post(dataEndpoint, { params })
                 .then(data => {
                     //UNCONTROLLEDAPIINPUTHANDLING

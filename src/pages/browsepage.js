@@ -28,6 +28,8 @@ class BrowsePage extends Component {
 
   }
 
+
+
   //TEST THIS !!
   returnProductGroupOrCombinedProductGroup = (COMBINEDPRODUCTGROUPSFILE, productGroup) => {
     if (COMBINEDPRODUCTGROUPSFILE.hasOwnProperty(productGroup)) {
@@ -56,12 +58,13 @@ class BrowsePage extends Component {
 
 
   loadInitalData = () => {
-    console.log(this.returnProductGroupOrCombinedProductGroup(COMBINEDPRODUCTGROUPS, this.props.productGroup))
     this.props.dispatch(searched(false))
     const params = { pageNumber: this.props.pageNumber, productGroup: this.returnProductGroupOrCombinedProductGroup(COMBINEDPRODUCTGROUPS, this.props.productGroup), pageAmount: PAGEAMOUNT }
     axios.post(dataEndpoint, { params })
       .then(data => {
         //UNCONTROLLEDAPIINPUTHANDLING
+        // console.log(data.data.docs[0])
+
         this.props.dispatch(itemDataCreator(data.data.docs))
         this.props.dispatch(maxPageSetter(Math.ceil(data.data.numFound / PAGEAMOUNT)))
         if (this.props.pageNumber > this.props.maxPageNumber || typeof this.props.pageNumber !== 'number') {

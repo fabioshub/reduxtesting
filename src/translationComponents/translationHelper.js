@@ -10,55 +10,82 @@ i18n
             en: {
                 translation: {
                     "search": "Search",
-                    "loading": 'Loading items...'
+                    "loading": 'Loading items...',
+                    'amount': 'Quantity',
+                    'added': 'Added to list, price'
+
                 }
             },
             nl: {
                 translation: {
                     "search": "Zoeken",
-                    "loading": 'Producten laden...'
+                    "loading": 'Producten laden...',
+                    'amount': 'Hoeveelheid',
+                    'added': 'Toegevoegd aan lijst, prijs'
+
                 }
             },
             de: {
                 translation: {
                     "search": "Suchen",
-                    "loading": 'Produkte laden...'
+                    "loading": 'Produkte laden...',
+                    'amount': 'Menge',
+                    'added': 'Zur Liste hinzugefügt, Preis'
+
                 }
             },
             fa: {
                 translation: {
                     "search": "Recherche",
-                    "loading": 'Charger des produits...'
+                    "loading": 'Charger des produits...',
+                    'amount': 'quantité',
+                    'added': 'Ajouté à la liste, prix'
+
                 }
             },
             'en-GB': {
                 translation: {
                     "search": "Search",
-                    "loading": 'Loading items...'
+                    "loading": 'Loading items...',
+                    'amount': 'Quantity',
+                    'added': 'Added to list, price',
+
                 }
             },
             'en-US': {
                 translation: {
                     "search": "Search",
-                    "loading": 'Loading items...'
+                    "loading": 'Loading items...',
+                    'amount': 'Quantity',
+                    'added': 'Added to list, price'
+
                 }
             },
             'nl-NL': {
                 translation: {
                     "search": "Zoeken",
-                    "loading": 'Producten laden...'
+                    "loading": 'Producten laden...',
+                    'amount': 'Hoeveelheid',
+                    'added': 'Toegevoegd aan lijst, prijs'
+
                 }
             },
             'de-DE': {
                 translation: {
                     "search": "Suchen",
-                    "loading": 'Produkte laden...'
+                    "loading": 'Produkte laden...',
+                    'amount': 'Menge',
+                    'added': 'Zur Liste hinzugefügt, Preis'
+
                 }
             },
             'fa-FA': {
                 translation: {
                     "search": "Recherche",
-                    "loading": 'Charger des produits...'
+                    "loading": 'Charger des produits...',
+                    'amount': 'quantité',
+                    'added': 'Ajouté à la liste, prix'
+
                 }
             },
         },

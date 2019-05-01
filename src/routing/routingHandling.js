@@ -7,6 +7,7 @@ import categoryPage from '../pages/categorypage.js';
 import ProductGroupPage from '../pages/productgrouppage.js';
 import ProductItemPage from '../pages/productItemPage.js';
 import SearchPage from '../pages/searchpage.js'
+import wishlistPage from '../pages/wishlistpage.js';
 
 export class CustomRouter extends Component {
 
@@ -14,6 +15,7 @@ export class CustomRouter extends Component {
         return (
             <Router history={history} >
                 <Switch>
+                    <Route exact path='/test/wishlist' component={wishlistPage}></Route>
                     <Route exact path='/test/search/:sort/:searchterm/:page' component={SearchPage}></Route>
                     <Route exact path='/test/search/:sort/:searchterm/:page/:item' component={ProductItemPage}></Route>
                     <Route exact path='/test' component={categoryPage}></Route>

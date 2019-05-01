@@ -5,12 +5,22 @@ import SearchBar from '../searchbar/searchBar.js';
 import FabBar from './fabbar.js'
 import '../styles/extraStyles.css';
 import { push } from 'connected-react-router';
-import { navLinkUpdater, searched } from '../actions/actions.js';
+import { navLinkUpdater, searched, overrideWistlist } from '../actions/actions.js';
+import Axios from 'axios';
+import { ZUILID } from '../constants/otherConstant.js';
+import { createWishtListLocalEndpoint, createWishtListEndpoint } from '../config/ptc-config.js';
 
 
 
 
 class HeaderContainer extends Component {
+
+    componentDidMount() {
+        Axios.get(`${createWishtListLocalEndpoint}/${ZUILID}`)
+            .then(data => {
+                this.props.dispatch(overrideWistlist(JSON.parse(data.data)))
+            })
+    }
 
     goToHome = () => {
         this.props.dispatch(push('/test'));

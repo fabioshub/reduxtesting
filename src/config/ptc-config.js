@@ -1,5 +1,6 @@
 export const endpoint = 'https://staging.api.ptmd.nl/rest/b2c/v1/';
-export const localendpoint = 'http://localhost:58080/'
+export const PORT = 48085;
+export const localendpoint = `http://localhost:${PORT}/`
 export const dataEndpoint = endpoint + 'data';
 export const dataLocalEndpoint = localendpoint + 'data';
 export const itemEndpoint = endpoint + 'item';
@@ -10,4 +11,9 @@ export const suggestItemsProviderLocalEndPoint = localendpoint + 'givesuggestite
 export const itemImageEndpoint = 'https://api.ptmd.nl/rest/images/v1/bigger/'
 export const categoriesEndpoint = endpoint + '/categories'; //CURRENTLY NOT IN USE
 export const productGroupEndpoint = endpoint + '/allproductgroups'; //CURRENTLY NOT IN USE
-
+export const createWishtListItemEndpoint = endpoint + 'createwishlistitem';
+export const createWishtListItemLocalEndpoint = localendpoint + 'createwishlistitem';
+export const createWishtListEndpoint = endpoint + 'createwishlist';
+export const createWishtListLocalEndpoint = localendpoint + 'createwishlist';
+export const saveOrderEndpoint = endpoint + 'saveorder';
+export const saveOrderLocalEndpoint = localendpoint + 'saveorder';

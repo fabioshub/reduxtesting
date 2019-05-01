@@ -4,7 +4,13 @@ import history from '../constants/history';
 import { Container, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import { onFocus, navLinkUpdater, searched } from '../actions/actions';
+import { withTranslation } from 'react-i18next';
+import { onFocus, navLinkUpdater, searched, overrideWistlist, addItemToWishlist, removeWishlist, snackbarTogglerP, resetState } from '../actions/actions';
+import Axios from 'axios';
+import { createWishListItem } from '../models/wishlistItemModel';
+import { ZUILID } from '../constants/otherConstant';
+import { convertWishToOrder } from '../models/orderModel';
+import { saveOrderLocalEndpoint, saveOrderEndpoint } from '../config/ptc-config';
 
 const styles = {
     container: {
@@ -44,7 +50,13 @@ const styles = {
         color: 'darkred',
         margin: '10px 10px 0 0',
         fontSize: '20px'
-    }
+    },
+    fabCheckout: {
+        background: 'darkred',
+        color: 'white',
+        margin: '10px 10px 0 0',
+        fontSize: '10px'
+    },
 }
 
 
@@ -55,6 +67,19 @@ class FabBar extends Component {
         this.props.dispatch(onFocus(false));
         history.goBack();
     }
+
+    handleCheckout = () => {
+
+        console.log(convertWishToOrder(this.props.wishlist, ZUILID))
+        const wishlist = this.props.wishlist
+        Axios.post(saveOrderLocalEndpoint, convertWishToOrder(wishlist, ZUILID)).then(res => {
+            console.log(res)
+        })
+        this.props.dispatch(push('/test'))
+        this.props.dispatch(removeWishlist())
+        window.location.reload()
+    }
+
 
     render() {
         return (
@@ -87,7 +112,12 @@ class FabBar extends Component {
                                     {this.props.navLink.productgroup}
                                 </Fab>
                                 : null : null}
-                            <Fab style={styles.fabHome} >
+                            {this.props.onWishlist && this.props.wishlist.length > 0 ?
+                                <Fab variant="extended" style={styles.fabCheckout} onClick={() => { this.handleCheckout() }} >
+                                    Checkout
+                                </Fab>
+                                : null}
+                            <Fab style={styles.fabHome} onClick={() => { this.props.dispatch(push(`/test/wishlist`)) }} >
                                 <i className="fa fa-heart" style={styles.fav}></i>
                             </Fab>
                         </Col>
@@ -98,13 +128,16 @@ class FabBar extends Component {
     }
 }
 
+
 const mapStateToProps = (state) => {
     return {
         navlink: state.main.navlink,
         searchTermData: state.main.searchtermdata,
         onFocus: state.main.onFocus,
-        searched: state.main.searched
+        searched: state.main.searched,
+        onWishlist: state.main.onWishlist,
+        wishlist: state.main.wishlist
     }
 }
 
-export default connect(mapStateToProps)(FabBar);
+export default withTranslation()(connect(mapStateToProps)(FabBar));

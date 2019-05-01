@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { translateItems } from '../translationComponents/translationHelper';
 import { withTranslation } from 'react-i18next';
+import { itemStyle } from '../styles/otherStyles';
 
 class Items extends Component {
 
@@ -36,39 +37,6 @@ class Items extends Component {
                 </Row>
             </Container>
         ) : (<span>{this.props.t('loading')}</span>);
-    }
-}
-
-const itemStyle = {
-    containerStyle: {
-        padding: "0px 40px",
-        margin: "0 0 50px 0",
-        height: '500px'
-    },
-    titleStyle: {
-        padding: "0 20px",
-        fontWeight: "500"
-    },
-    idStyle: {
-        fontSize: "0.8em",
-    },
-    pictureStyle: {
-        maxHeight: "300px",
-        margin: "10px 0 10px 0"
-    },
-    rdStyle: {
-        fontSize: "0.8em",
-    },
-    priceStyle: {
-        fontWeight: "700",
-        fontSize: "1em",
-    },
-    metaStyle: {
-        alignText: "left",
-        marginBottom: "20px"
-    },
-    hrStyle: {
-        width: "40%"
     }
 }
 
