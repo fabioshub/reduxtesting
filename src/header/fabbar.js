@@ -5,12 +5,12 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { withTranslation } from 'react-i18next';
-import { onFocus, navLinkUpdater, searched, overrideWistlist, addItemToWishlist, removeWishlist, snackbarTogglerP, resetState } from '../actions/actions';
+import { onFocus, navLinkUpdater, searched, resetState, overrideWistlist, snackbarTogglerP, setWishListAmount } from '../actions/actions';
 import Axios from 'axios';
 import { createWishListItem } from '../models/wishlistItemModel';
 import { ZUILID } from '../constants/otherConstant';
 import { convertWishToOrder } from '../models/orderModel';
-import { saveOrderLocalEndpoint, saveOrderEndpoint } from '../config/ptc-config';
+import { saveOrderLocalEndpoint, saveOrderEndpoint, endpoint } from '../config/ptc-config';
 
 const styles = {
     container: {
@@ -29,6 +29,11 @@ const styles = {
         color: 'grey',
         margin: '10px 10px 0 0'
     },
+    fabWishlist: {
+        background: 'white',
+        color: 'grey',
+        margin: '10px 10px 0 0'
+    },
     fabNavlink: {
         background: 'white',
         color: 'grey',
@@ -40,10 +45,15 @@ const styles = {
         fontSize: '15px',
         marginRight: '5px'
     },
-    fav: {
-        fontSize: '24px',
+    holder: {
+        fontSize: '30px',
         color: 'darkred',
-        marginTop: '2px'
+        // marginTop: '7px'
+    },
+    fav: {
+        fontSize: '30px',
+        color: 'darkred',
+        marginTop: '15px'
     },
     closeSuggestBox: {
         background: 'white',
@@ -57,6 +67,12 @@ const styles = {
         margin: '10px 10px 0 0',
         fontSize: '10px'
     },
+    counter: {
+        // margin: '0 0 0 5px',
+        color: 'white',
+        // FontWeight: '1000',
+        fontSize: '10px'
+    }
 }
 
 
@@ -69,15 +85,17 @@ class FabBar extends Component {
     }
 
     handleCheckout = () => {
-
-        console.log(convertWishToOrder(this.props.wishlist, ZUILID))
-        const wishlist = this.props.wishlist
-        Axios.post(saveOrderEndpoint, convertWishToOrder(wishlist, ZUILID)).then(res => {
-            console.log(res)
+        Axios.post(endpoint + `saveorder`, { ZUILID }).then(data => {
+            this.props.dispatch(overrideWistlist(data.data))
+            this.props.dispatch(snackbarTogglerP(true))
+            this.props.dispatch(setWishListAmount(0))
         })
-        this.props.dispatch(push('/test'))
-        this.props.dispatch(removeWishlist())
-        // window.location.reload()
+    }
+
+    componentDidMount = () => {
+        Axios.get(endpoint + `itemsonwishlist/${ZUILID}`).then(data => {
+            this.props.dispatch(setWishListAmount(data.data.amountOnWishlist))
+        })
     }
 
 
@@ -117,8 +135,13 @@ class FabBar extends Component {
                                     Checkout
                                 </Fab>
                                 : null}
-                            <Fab style={styles.fabHome} onClick={() => { this.props.dispatch(push(`/test/wishlist`)) }} >
-                                <i className="fa fa-heart" style={styles.fav}></i>
+                            <Fab style={styles.fabWishlist} onClick={() => { this.props.dispatch(push(`/test/wishlist`)) }} >
+                                <span className="fa-stack" style={styles.holder}>
+                                    <span className="fa fa-heart fa-stack-2x" style={styles.fav}></span>
+                                    <span className="fa-stack-1x" style={styles.counter}>{this.props.wishlistCounter !== 0 ? this.props.wishlistCounter : null}</span>
+
+                                </span>
+                                {/* <span style={styles.counter}>{this.props.wishlistCounter}</span> */}
                             </Fab>
                         </Col>
                     </Row>
@@ -136,7 +159,8 @@ const mapStateToProps = (state) => {
         onFocus: state.main.onFocus,
         searched: state.main.searched,
         onWishlist: state.main.onWishlist,
-        wishlist: state.main.wishlist
+        wishlist: state.main.wishlist,
+        wishlistCounter: state.main.wishlistCounter
     }
 }
 

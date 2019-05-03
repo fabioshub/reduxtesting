@@ -263,17 +263,18 @@ export const PRODUCTGROUPS = [//catCode
 					"ENU": "Tables"
 				}
 			},
-			{
-				productgroup: '12020', //for onclicktoitems
-				name: 'Stoelen',
-				image: stoelen,
-				"names": {
-					"FRA": "Chaises",
-					"DEU": "Stühle",
-					"NLD": "Stoelen",
-					"ENU": "Chairs"
-				}
-			},
+			//currently contains 0 object
+			// {
+			// 	productgroup: '12020', //for onclicktoitems
+			// 	name: 'Stoelen',
+			// 	image: stoelen,
+			// 	"names": {
+			// 		"FRA": "Chaises",
+			// 		"DEU": "Stühle",
+			// 		"NLD": "Stoelen",
+			// 		"ENU": "Chairs"
+			// 	}
+			// },
 			{
 				productgroup: '12015', //for onclicktoitems
 				name: 'Krukjes',

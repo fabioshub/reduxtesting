@@ -53,7 +53,7 @@ class ProductItem extends Component {
         )
     }
 
-    handleAddToWishList = (args) => {
+    handleAddToWishList(args) {
         this.props.addToWishList(args)
     }
 
@@ -71,7 +71,7 @@ class ProductItem extends Component {
                 </Row>
                 <Row >
                     <Col className='text-center'>
-                        <Fab variant="extended" style={styles.fabNavlink} onClick={() => { this.handleAddToWishList(createWishListItem(currentItemsOnPage, 1)) }}>
+                        <Fab variant="extended" style={styles.fabNavlink} onClick={() => { this.handleAddToWishList(currentItemsOnPage) }}>
                             <i style={styles.plus} className="fa fa-plus" aria-hidden="true"></i>
                             <i style={styles.fav} className="fa fa-heart" aria-hidden="true"></i>
                         </Fab>

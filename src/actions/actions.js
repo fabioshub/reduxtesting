@@ -94,31 +94,10 @@ export const snackbarTogglerP = (bool) => {
 }
 
 
-export const addItemToWishlist = (item) => {
-    return {
-        type: 'ADDTOWISHLIST',
-        payload: item
-    }
-}
-
-
 export const overrideWistlist = (item) => {
     return {
         type: 'OVERRIDEWISHLIST',
         payload: item
-    }
-}
-
-export const removeFromWishlist = (item) => {
-    return {
-        type: 'REMOVEFROMWISHLIST',
-        payload: item
-    }
-}
-
-export const removeWishlist = () => {
-    return {
-        type: 'REMOVEWISHLIST'
     }
 }
 
@@ -134,5 +113,19 @@ export const onWishlist = (bool) => {
 export const resetState = () => {
     return {
         type: 'RESETSTATE',
+    }
+}
+
+export const setWishListAmount = (amount) => {
+    return {
+        type: 'SETWISHLISTAMOUNT',
+        payload: amount
+    }
+}
+
+export const updateWishListAmount = (amount) => {
+    return {
+        type: 'UPDATEWISHLISTAMOUNT',
+        payload: amount
     }
 }

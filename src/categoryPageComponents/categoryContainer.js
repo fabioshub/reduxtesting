@@ -30,11 +30,16 @@ class CategoryContainer extends Component {
         this.props.dispatch(push('/test/' + productGroupCode));
     }
 
+    goToPlants = () => {
+        this.props.dispatch(push('/test/6/18040/1'))
+    }
+
     render() {
         return (
             <Category
                 data={CATEGORIES}
                 dispatchProductGroupCode={this.dispatchProductGroupCode}
+                goToPlants={this.goToPlants}
             />
         );
     }

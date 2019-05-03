@@ -7,6 +7,15 @@ import { translate } from '../translationComponents/translationHelper';
 class Category extends Component {
     renderCategories() {
         return this.props.data.map((item, index) => {
+            if (item.code === '6') {
+                return (
+                    <Col onClick={() => { this.props.goToPlants() }} style={itemStyle.containerStyle} key={item.code} sm={6} md={6}>
+                        <span style={itemStyle.titleStyle}>{translate(item.names)}</span>
+                        <hr style={itemStyle.hrStyle} />
+                        <img src={imageUrlConstructor(item.image)} alt={index} style={itemStyle.pictureStyle}></img>
+                    </Col>
+                )
+            }
             return (
                 <Col onClick={() => { this.callProductGroup(item.code) }} style={itemStyle.containerStyle} key={item.code} sm={6} md={6}>
                     <span style={itemStyle.titleStyle}>{translate(item.names)}</span>
@@ -16,6 +25,8 @@ class Category extends Component {
             )
         })
     }
+
+
 
     callProductGroup = (productGroupCode) => {
         this.props.dispatchProductGroupCode(productGroupCode);

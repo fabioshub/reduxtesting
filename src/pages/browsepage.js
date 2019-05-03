@@ -47,7 +47,7 @@ class BrowsePage extends Component {
           if (productGroup.category === categorie.code) {
             productGroup.productgroupsitem.forEach(productgroupitem => {
               if (productgroupitem.productgroup === this.props.productGroup) {
-                this.props.dispatch(navLinkUpdater({ category: translate(categorie.names), categoryCode: parseInt(categorie.code, 10), productgroup: translate(productgroupitem.names), productGroupCode: parseInt(productgroupitem.productgroup) }));
+                this.props.dispatch(navLinkUpdater({ category: translate(categorie.names), categoryCode: parseInt(categorie.code, 10), productgroup: parseInt(categorie.code, 10) !== 6 ? translate(productgroupitem.names) : null, productGroupCode: parseInt(productgroupitem.productgroup) }));
               }
             })
           }

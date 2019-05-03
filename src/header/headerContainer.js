@@ -16,10 +16,10 @@ import { createWishtListLocalEndpoint, createWishtListEndpoint } from '../config
 class HeaderContainer extends Component {
 
     componentDidMount() {
-        Axios.get(`${createWishtListEndpoint}/${ZUILID}`)
-            .then(data => {
-                this.props.dispatch(overrideWistlist(JSON.parse(data.data)))
-            })
+        // Axios.get(`${createWishtListLocalEndpoint}/${ZUILID}`)
+        //     .then(data => {
+        //         this.props.dispatch(overrideWistlist(JSON.parse(data.data)))
+        //     })
     }
 
     goToHome = () => {

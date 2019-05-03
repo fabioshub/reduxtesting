@@ -1,3 +1,3 @@
 export const PAGEAMOUNT = 10;
 
-export const ZUILID = 'jan';
+export const ZUILID = 'piet';

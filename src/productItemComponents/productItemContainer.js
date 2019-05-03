@@ -3,9 +3,9 @@ import ProductItem from './productItem.js';
 import { connect } from 'react-redux';
 
 import { withRouter } from 'react-router-dom';
-import { itemEndpoint } from '../config/ptc-config.js';
+import { itemEndpoint, endpoint } from '../config/ptc-config.js';
 import Axios from 'axios';
-import { setItemPage, navLinkUpdater, snackbarToggler, addItemToWishlist } from '../actions/actions.js';
+import { setItemPage, navLinkUpdater, snackbarToggler, addItemToWishlist, setWishListAmount } from '../actions/actions.js';
 import { CATEGORIES } from '../extra/hardcodedFiles/categories.js';
 import { PRODUCTGROUPS } from '../extra/hardcodedFiles/productgroups.js';
 import { translate } from '../translationComponents/translationHelper.js';
@@ -26,8 +26,9 @@ class ProductItemContainer extends Component {
                 PRODUCTGROUPS.forEach(productGroup => {
                     if (productGroup.category === categorie.code) {
                         productGroup.productgroupsitem.forEach(productgroupitem => {
+
                             if (parseInt(productgroupitem.productgroup, 10) === parseInt(this.props.productGroup, 10)) {
-                                this.props.dispatch(navLinkUpdater({ category: translate(categorie.names), categoryCode: parseInt(categorie.code, 10), productgroup: translate(productgroupitem.names), productGroupCode: parseInt(productgroupitem.productgroup) }));
+                                this.props.dispatch(navLinkUpdater({ category: translate(categorie.names), categoryCode: parseInt(categorie.code, 10), productgroup: parseInt(categorie.code, 10) !== 6 ? translate(productgroupitem.names) : null, productGroupCode: parseInt(productgroupitem.productgroup) }));
                             }
                         })
                     }
@@ -48,9 +49,11 @@ class ProductItemContainer extends Component {
 
     addToWishList = (wishlistItem) => {
         this.props.dispatch(snackbarToggler(true))
-        // addItemToLocalStorageWishlist('wishlist', wishlistItem)
-        this.props.dispatch(addItemToWishlist(wishlistItem))
-
+        const wishlistItemString = JSON.stringify(wishlistItem)
+        const params = { wishlistItem: wishlistItemString, ZUILID }
+        Axios.post(endpoint + `additemtowishlist`, params).then(data => {
+            this.props.dispatch(setWishListAmount(data.data.amount))
+        })
     }
 
     snackbarClose = () => {
@@ -77,7 +80,8 @@ const mapStateToProps = (state, ownProps) => {
         category: parseInt(ownProps.match.params.category, 10),
         productGroup: parseInt(ownProps.match.params.productgroup, 10),
         snackbarOpened: state.main.snackbarOpened,
-        wishlist: state.main.wishlist
+        wishlist: state.main.wishlist,
+        wishlistCounter: state.main.wishlistCounter
     }
 }
 
